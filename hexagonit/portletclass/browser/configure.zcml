@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zope="http://namespaces.zope.org/zope"
+    i18n_domain="hexagonit.portletclass">
+
+    <include package="plone.app.registry" />
+
+    <!-- Control panel -->
+    <browser:page
+        name="portletclass-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.PortletClassSettingsControlPanel"
+        permission="cmf.ManagePortal"
+        />
+
+  <!-- <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    component=".settings.PortletClassVocabulary"
+    name="hexagonit.portletclass.PortletClassVocabulary"
+    />
+  <adapter factory="hexagonit.portletclass.browser.settings.PortletClassSettings"/>
+  <browser:page
+    name="portletclass-settings"
+    for=".interfaces.IPortletClassEnabled"
+    class=".settings.GallerySettingsForm"
+    permission="cmf.ModifyPortalContent"
+    />
+  <browser:page
+    name="portletclass-enabled"
+    for="*"
+    class=".settings.GalleryEnabled"
+    permission="zope2.View"
+    /> -->
+
+</configure>

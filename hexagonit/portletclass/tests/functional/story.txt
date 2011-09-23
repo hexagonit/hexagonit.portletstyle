@@ -1,0 +1,23 @@
+User story
+==========
+
+A scripted walk-through of basic features of hexagonit.portletclass.
+
+Prepare
+-------
+
+Start by logging-in so we can manage portlets.
+
+    Go to login screen.
+    >>> browser.open(portal.absolute_url() + '/login')
+
+    Fill in your credentials.
+    >>> browser.getControl(name='__ac_name').value = TEST_USER_NAME
+    >>> browser.getControl(name='__ac_password').value = TEST_USER_PASSWORD
+
+    Click Login button.
+    >>> browser.getControl(name='submit').click()
+
+    Are we logged in?
+    >>> "You are now logged in" in browser.contents
+    True
