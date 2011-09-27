@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="hexagonit.portletclass">
 
@@ -10,6 +11,24 @@
 
   <include package="plone.app.registry" />
   <include package=".browser" />
+
+  <!-- Monkey patch plone.app.portlets.portlets.base to allow asigning a css
+    class to portlets -->
+  <include package="collective.monkeypatcher" />
+  <monkey:patch
+      description="Patch plone.app.portlets Renderer to have css_class getter"
+      class="plone.app.portlets.portlets.base.Renderer"
+      original="css_class"
+      replacement=".patcher.get_css_class"
+      ignoreOriginal="true"
+      />
+  <monkey:patch
+      description="Patch plone.portlets IPortletDataProvider to have a css_class field"
+      class="plone.portlets.interfaces.IPortletDataProvider"
+      original="css_class"
+      replacement=".patcher.css_class"
+      ignoreOriginal="true"
+      />
 
   <genericsetup:registerProfile
       name="default"
