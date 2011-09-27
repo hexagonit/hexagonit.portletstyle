@@ -12,9 +12,9 @@
   <include package="plone.app.registry" />
   <include package=".browser" />
 
-  <!-- Monkey patch plone.app.portlets.portlets.base to allow asigning a css
-    class to portlets -->
   <include package="collective.monkeypatcher" />
+  <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
+    class to portlets -->
   <monkey:patch
       description="Patch plone.app.portlets Renderer to have css_class getter"
       class="plone.app.portlets.portlets.base.Renderer"
@@ -23,12 +23,28 @@
       ignoreOriginal="true"
       />
   <monkey:patch
-      description="Patch plone.portlets IPortletDataProvider to have a css_class field"
-      class="plone.portlets.interfaces.IPortletDataProvider"
-      original="css_class"
-      replacement=".patcher.css_class"
+      description="Patch plone.app.portlets Assignment to have __init__"
+      class="plone.app.portlets.portlets.base.Assignment"
+      original="__init__"
+      replacement=".patcher.base_assignment__init__"
       ignoreOriginal="true"
       />
+
+  <!-- Now also patch each portlet's Assignment class -->
+  <monkey:patch
+      description="Patch recent-item portlet's Assignment class"
+      class="plone.app.portlets.portlets.recent.Assignment"
+      original="__init__"
+      replacement=".patcher.recent_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch recent-item portlet's AddForm class"
+      class="plone.app.portlets.portlets.recent.AddForm"
+      original="create"
+      replacement=".patcher.recent_create"
+      />
+
+
 
   <genericsetup:registerProfile
       name="default"
