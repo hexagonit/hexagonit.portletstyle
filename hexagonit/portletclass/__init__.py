@@ -11,9 +11,11 @@ Assignment.css_class = -1
 
 
 from zope import schema
-from plone.portlets.interfaces import IPortletDataProvider
-css_class = schema.Int(title=u'CSS class id',
-                        description=u'Css class description.',
-                        required=True,
-                        default=5)
-IPortletDataProvider.css_class
+from plone.portlets import interfaces # import IPortletDataProvider as old
+from zope.interface import Interface
+class IPortletDataProvider(Interface):
+    css_class = schema.Int(title=u'CSS class id',
+                            description=u'Css class description.',
+                            required=True,
+                            default=5)
+interfaces.IPortletDataProvider = IPortletDataProvider
