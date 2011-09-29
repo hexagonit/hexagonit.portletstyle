@@ -30,7 +30,8 @@
       ignoreOriginal="true"
       />
 
-  <!-- Now also patch each portlet's Assignment class -->
+  <!-- Now also patch each portlet's Assignment and AddForm classes -->
+  <!-- Recent Items portlet -->
   <monkey:patch
       description="Patch recent-item portlet's Assignment class"
       class="plone.app.portlets.portlets.recent.Assignment"
@@ -43,8 +44,6 @@
       original="create"
       replacement=".patcher.recent_create"
       />
-
-
 
   <genericsetup:registerProfile
       name="default"
