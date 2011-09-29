@@ -45,6 +45,7 @@ setup(name='hexagonit.portletclass',
           'plone.browserlayer',
           'setuptools',
           'unittest2',
+          'z3c.jbot',
           'zope.i18nmessageid',
       ],
       entry_points="""
