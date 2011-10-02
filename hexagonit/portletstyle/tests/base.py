@@ -15,23 +15,23 @@ from plone.app.testing import applyProfile
 from plone.testing import z2
 
 
-class HexagonitPortletClassLayer(PloneSandboxLayer):
+class PortletStyleLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
         # Load ZCML
-        import hexagonit.portletclass
+        import hexagonit.portletstyle
         import plone.app.contentlisting
-        self.loadZCML(package=hexagonit.portletclass)
+        self.loadZCML(package=hexagonit.portletstyle)
         self.loadZCML(package=plone.app.contentlisting)
-        z2.installProduct(app, 'hexagonit.portletclass')
+        z2.installProduct(app, 'hexagonit.portletstyle')
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
-        applyProfile(portal, 'hexagonit.portletclass:default')
+        applyProfile(portal, 'hexagonit.portletstyle:default')
 
         # Create test contemt
         setRoles(portal, TEST_USER_ID, ['Manager'])
@@ -46,14 +46,14 @@ class HexagonitPortletClassLayer(PloneSandboxLayer):
 
     def tearDownZope(self, app):
         """Tear down Zope."""
-        z2.uninstallProduct(app, 'hexagonit.portletclass')
+        z2.uninstallProduct(app, 'hexagonit.portletstyle')
 
 
-FIXTURE = HexagonitPortletClassLayer()
+FIXTURE = PortletStyleLayer()
 INTEGRATION_TESTING = IntegrationTesting(
-    bases=(FIXTURE,), name="HexagonitPortletClassLayer:Integration")
+    bases=(FIXTURE,), name="PortletStyleLayer:Integration")
 FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(FIXTURE,), name="HexagonitPortletClassLayer:Functional")
+    bases=(FIXTURE,), name="PortletStyleLayer:Functional")
 
 
 class IntegrationTestCase(unittest.TestCase):

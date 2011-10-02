@@ -5,7 +5,7 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
 
 
-HexagonitPortletclassMessageFactory = MessageFactory('hexagonit.portletclass')
+PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
 Assignment.css_class = -1
 
 

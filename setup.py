@@ -7,17 +7,17 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 
-version = read('hexagonit', 'portletclass', 'version.txt').strip()
+version = read('hexagonit', 'portletstyle', 'version.txt').strip()
 
 long_description = (
-    read('hexagonit', 'portletclass', 'docs', 'README.rst') +
-    read('hexagonit', 'portletclass', 'docs', 'FUTURE.rst') +
-    read('hexagonit', 'portletclass', 'docs', 'CREDITS.rst') +
-    read('hexagonit', 'portletclass', 'docs', 'HISTORY.rst') +
-    read('hexagonit', 'portletclass', 'docs', 'LICENSE.rst'))
+    read('hexagonit', 'portletstyle', 'docs', 'README.rst') +
+    read('hexagonit', 'portletstyle', 'docs', 'FUTURE.rst') +
+    read('hexagonit', 'portletstyle', 'docs', 'CREDITS.rst') +
+    read('hexagonit', 'portletstyle', 'docs', 'HISTORY.rst') +
+    read('hexagonit', 'portletstyle', 'docs', 'LICENSE.rst'))
 
 
-setup(name='hexagonit.portletclass',
+setup(name='hexagonit.portletstyle',
       version=version,
       description="Assign a CSS class to portlet",
       long_description=long_description,

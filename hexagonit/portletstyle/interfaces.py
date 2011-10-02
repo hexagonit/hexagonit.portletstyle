@@ -1,12 +1,12 @@
-from hexagonit.portletclass import HexagonitPortletclassMessageFactory as _
+from hexagonit.portletstyle import PortletStyleMessageFactory as _
 from zope.interface import Interface
 from zope.schema import TextLine
 
-class IPortletClassLayer(Interface):
+class IPortletStyleLayer(Interface):
     """Marker interface for defining a Zope 3 browser layer."""
 
 # 
-# class IPortletClassSettings(Interface):
+# class IPortletStyleSettings(Interface):
 #     """Configuration for portlet CSS class."""
 # 
 #     portlet_classes = TextLine(

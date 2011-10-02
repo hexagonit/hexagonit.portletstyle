@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Boilerplate for doctest functional tests."""
 
-from hexagonit.portletclass.tests.base import FUNCTIONAL_TESTING
+from hexagonit.portletstyle.tests.base import FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
 
-from hexagonit.portletclass.tests.base import IntegrationTestCase
+from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from Products.CMFCore.utils import getToolByName
 
 import unittest2 as unittest
 
 
 class TestCase(IntegrationTestCase):
-    """Test installation of hexagonit.portletclass into Plone."""
+    """Test installation of hexagonit.portletstyle into Plone."""
 
     def setUp(self):
         """Custom shared utility setup for tests."""
@@ -16,15 +16,15 @@ class TestCase(IntegrationTestCase):
         self.installer = getToolByName(self.portal, 'portal_quickinstaller')
 
     def test_product_installed(self):
-        """Test if hexagonit.portletclass is installed with
+        """Test if hexagonit.portletstyle is installed with
         portal_quickinstaller.
         """
-        self.failUnless(self.installer.isProductInstalled('hexagonit.portletclass'))
+        self.failUnless(self.installer.isProductInstalled('hexagonit.portletstyle'))
 
     def test_uninstall(self):
-        """Test if hexagonit.portletclass is cleanly uninstalled."""
-        self.installer.uninstallProducts(['hexagonit.portletclass'])
-        self.failIf(self.installer.isProductInstalled('hexagonit.portletclass'))
+        """Test if hexagonit.portletstyle is cleanly uninstalled."""
+        self.installer.uninstallProducts(['hexagonit.portletstyle'])
+        self.failIf(self.installer.isProductInstalled('hexagonit.portletstyle'))
 
 
 def test_suite():

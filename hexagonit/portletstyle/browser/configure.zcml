@@ -2,37 +2,37 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zope="http://namespaces.zope.org/zope"
-    i18n_domain="hexagonit.portletclass">
+    i18n_domain="hexagonit.portletstyle">
 
     <!-- <include package="plone.app.registry" /> -->
 
     <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
     <include package="z3c.jbot" file="meta.zcml" />
-    <browser:jbot directory="overrides" layer="..interfaces.IPortletClassLayer" />
+    <browser:jbot directory="overrides" layer="..interfaces.IPortletStyleLayer" />
 
 
     <!-- Control panel -->
     <!-- <browser:page
-        name="portletclass-settings"
+        name="portletstyle-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.PortletClassSettingsControlPanel"
+        class=".controlpanel.PortletStyleSettingsControlPanel"
         permission="cmf.ManagePortal"
         /> -->
 
   <!-- <utility
     provides="zope.schema.interfaces.IVocabularyFactory"
-    component=".settings.PortletClassVocabulary"
-    name="hexagonit.portletclass.PortletClassVocabulary"
+    component=".settings.PortletStyleVocabulary"
+    name="hexagonit.portletstyle.PortletStyleVocabulary"
     />
-  <adapter factory="hexagonit.portletclass.browser.settings.PortletClassSettings"/>
+  <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyleSettings"/>
   <browser:page
-    name="portletclass-settings"
-    for=".interfaces.IPortletClassEnabled"
+    name="portletstyle-settings"
+    for=".interfaces.IPortletStyleEnabled"
     class=".settings.GallerySettingsForm"
     permission="cmf.ModifyPortalContent"
     />
   <browser:page
-    name="portletclass-enabled"
+    name="portletstyle-enabled"
     for="*"
     class=".settings.GalleryEnabled"
     permission="zope2.View"

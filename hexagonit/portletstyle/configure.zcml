@@ -4,7 +4,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="hexagonit.portletclass">
+    i18n_domain="hexagonit.portletstyle">
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
@@ -47,9 +47,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="hexagonit.portletclass"
+      title="hexagonit.portletstyle"
       directory="profiles/default"
-      description="Installs the hexagonit.portletclass package"
+      description="Installs the hexagonit.portletstyle package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

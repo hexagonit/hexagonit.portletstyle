@@ -1,6 +1,0 @@
-<layers>
-  <layer
-      name="hexagonit.portletclass"
-      interface="hexagonit.portletclass.interfaces.IPortletClassLayer"
-      />
-</layers>
