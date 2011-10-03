@@ -12,30 +12,29 @@
 
 
     <!-- Control panel -->
-    <!-- <browser:page
+    <browser:page
         name="portletstyle-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.PortletStyleSettingsControlPanel"
         permission="cmf.ManagePortal"
+        />
+    <!-- <utility
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".settings.PortletStyleVocabulary"
+        name="hexagonit.portletstyle.PortletStyleVocabulary"
+        />
+    <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyleSettings"/>
+    <browser:page
+        name="portletstyle-settings"
+        for=".interfaces.IPortletStyleEnabled"
+        class=".settings.GallerySettingsForm"
+        permission="cmf.ModifyPortalContent"
+        />
+    <browser:page
+        name="portletstyle-enabled"
+        for="*"
+        class=".settings.GalleryEnabled"
+        permission="zope2.View"
         /> -->
-
-  <!-- <utility
-    provides="zope.schema.interfaces.IVocabularyFactory"
-    component=".settings.PortletStyleVocabulary"
-    name="hexagonit.portletstyle.PortletStyleVocabulary"
-    />
-  <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyleSettings"/>
-  <browser:page
-    name="portletstyle-settings"
-    for=".interfaces.IPortletStyleEnabled"
-    class=".settings.GallerySettingsForm"
-    permission="cmf.ModifyPortalContent"
-    />
-  <browser:page
-    name="portletstyle-enabled"
-    for="*"
-    class=".settings.GalleryEnabled"
-    permission="zope2.View"
-    /> -->
 
 </configure>

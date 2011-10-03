@@ -6,7 +6,7 @@ from plone.app.registry.browser import controlpanel
 class PortletStyleSettingsEditForm(controlpanel.RegistryEditForm):
 
     schema = IPortletStyleSettings
-    label = _(u"Portlet Class settings")
+    label = _(u"Portlet Style settings")
     description = _(u"""TODO""")
 
     def updateFields(self):

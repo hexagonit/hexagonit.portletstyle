@@ -3,6 +3,7 @@
 
 import unittest2 as unittest
 
+from hexagonit.portletstyle.interfaces import IPortletStyleSettings
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
@@ -12,6 +13,7 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import login
 from plone.app.testing import setRoles
 from plone.app.testing import applyProfile
+from plone.registry import Registry
 from plone.testing import z2
 
 
@@ -33,17 +35,10 @@ class PortletStyleLayer(PloneSandboxLayer):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'hexagonit.portletstyle:default')
 
-        # Create test contemt
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        login(portal, TEST_USER_NAME)
-        portal.invokeFactory('Folder', 'folder')
-        portal.invokeFactory('Topic', 'collection')
-
-        # Commit so that the test browser sees these objects
-        portal.portal_catalog.clearFindAndRebuild()
-        import transaction
-        transaction.commit()
-
+        # Set up the Portlet Style settings registry
+        self.registry = Registry()
+        self.registry.registerInterface(IPortletStyleSettings)
+        
     def tearDownZope(self, app):
         """Tear down Zope."""
         z2.uninstallProduct(app, 'hexagonit.portletstyle')
