@@ -27,6 +27,14 @@ class TestSetup(IntegrationTestCase):
         self.failIf(self.installer.isProductInstalled('hexagonit.portletstyle'))
 
 
+    # browserlayer.xml
+    def test_browserlayer(self):
+        """Test that IPortletStyleLayer is registered."""
+        from hexagonit.portletstyle.interfaces import IPortletStyleLayer
+        from plone.browserlayer import utils
+        self.failUnless(IPortletStyleLayer in utils.registered_layers())
+
+
 def test_suite():
     """This sets up a test suite that actually runs the tests in the class
     above."""
