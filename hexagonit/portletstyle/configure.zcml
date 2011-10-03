@@ -8,11 +8,10 @@
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
-
-  <include package="plone.app.registry" />
+  <includeDependencies package="." />
+  
   <include package=".browser" />
 
-  <include package="collective.monkeypatcher" />
   <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
     class to portlets -->
   <monkey:patch
