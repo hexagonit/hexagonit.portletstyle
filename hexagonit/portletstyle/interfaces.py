@@ -9,7 +9,7 @@ class IPortletStyleLayer(Interface):
 class IPortletStyleSettings(Interface):
     """Configuration for portlet CSS class."""
 
-    portlet_classes = TextLine(
+    portlet_styles = TextLine(
         title=_(u'label_portlet_classes', default=u'Available portlet classes'),
         description=_(u'description_portlet_classes',
             default=u'Enter portlet CSS classes that users will be able to '

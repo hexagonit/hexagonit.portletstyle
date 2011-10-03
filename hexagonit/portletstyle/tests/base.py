@@ -35,10 +35,6 @@ class PortletStyleLayer(PloneSandboxLayer):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'hexagonit.portletstyle:default')
 
-        # Set up the Portlet Style settings registry
-        self.registry = Registry()
-        self.registry.registerInterface(IPortletStyleSettings)
-        
     def tearDownZope(self, app):
         """Tear down Zope."""
         z2.uninstallProduct(app, 'hexagonit.portletstyle')
