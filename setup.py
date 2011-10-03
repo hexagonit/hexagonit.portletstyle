@@ -37,6 +37,7 @@ setup(name='hexagonit.portletstyle',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'collective.monkeypatcher',
           'manuel',
           'mock',
           'plone.app.testing',
