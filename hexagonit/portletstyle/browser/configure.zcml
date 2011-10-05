@@ -13,9 +13,9 @@
 
     <!-- Control panel -->
     <browser:page
-        name="portletstyle-settings"
+        name="portletstyles"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.PortletStyleSettingsControlPanel"
+        class=".controlpanel.PortletStylesControlPanel"
         permission="cmf.ManagePortal"
         />
     <!-- <utility
@@ -23,9 +23,9 @@
         component=".settings.PortletStyleVocabulary"
         name="hexagonit.portletstyle.PortletStyleVocabulary"
         />
-    <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyleSettings"/>
+    <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyles"/>
     <browser:page
-        name="portletstyle-settings"
+        name="portletstyles"
         for=".interfaces.IPortletStyleEnabled"
         class=".settings.GallerySettingsForm"
         permission="cmf.ModifyPortalContent"

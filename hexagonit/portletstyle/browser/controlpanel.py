@@ -1,20 +1,21 @@
 from hexagonit.portletstyle import PortletStyleMessageFactory as _
-from hexagonit.portletstyle.interfaces import IPortletStyleSettings
+from hexagonit.portletstyle.interfaces import IPortletStyles
 from plone.app.registry.browser import controlpanel
+from plone.z3cform.textlines import TextLinesFieldWidget
 
 
-class PortletStyleSettingsEditForm(controlpanel.RegistryEditForm):
+class PortletStylesEditForm(controlpanel.RegistryEditForm):
 
-    schema = IPortletStyleSettings
-    label = _(u"Portlet Style settings")
-    description = _(u"""TODO""")
+    schema = IPortletStyles
+    label = _(u"Portlet Style")
 
     def updateFields(self):
-        super(PortletStyleSettingsEditForm, self).updateFields()
+        super(PortletStylesEditForm, self).updateFields()
 
     def updateWidgets(self):
-        super(PortletStyleSettingsEditForm, self).updateWidgets()
+        self.fields["portlet_styles"].widgetFactory = TextLinesFieldWidget
+        super(PortletStylesEditForm, self).updateWidgets()
 
 
-class PortletStyleSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
-    form = PortletStyleSettingsEditForm
+class PortletStylesControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = PortletStylesEditForm

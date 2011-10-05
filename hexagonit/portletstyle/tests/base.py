@@ -3,7 +3,7 @@
 
 import unittest2 as unittest
 
-from hexagonit.portletstyle.interfaces import IPortletStyleSettings
+from hexagonit.portletstyle.interfaces import IPortletStyles
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE

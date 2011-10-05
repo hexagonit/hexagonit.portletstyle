@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Unit and integration tests for Portlet Style Settings control panel
+"""Unit and integration tests for Portlet Styles control panel
 configlet.
 """
 
 from AccessControl import Unauthorized
 from Products.CMFCore.utils import getToolByName
-from hexagonit.portletstyle.interfaces import IPortletStyleSettings
+from hexagonit.portletstyle.interfaces import IPortletStyles
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from plone.app.testing import logout
 from zope.component import getMultiAdapter
@@ -15,8 +15,8 @@ from plone.registry.interfaces import IRegistry
 import unittest2 as unittest
 
 
-class TestSettings(IntegrationTestCase):
-    """Integration tests for Portlet Style Settings control panel configlet."""
+class TestControlPanel(IntegrationTestCase):
+    """Integration tests for Portlet Styles control panel configlet."""
 
     def setUp(self):
         """Custom shared utility setup for tests."""
@@ -25,7 +25,7 @@ class TestSettings(IntegrationTestCase):
     def test_portletstyle_controlpanel_view_accessible(self):
         """Test if the portletstyle control panel view is accessable."""
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
-                               name="portletstyle-settings")
+                               name="portletstyles")
         view = view.__of__(self.portal)
         self.failUnless(view())
 
@@ -37,21 +37,21 @@ class TestSettings(IntegrationTestCase):
         self.assertRaises(
             Unauthorized,
             self.portal.restrictedTraverse,
-            '@@portletstyle-settings'
+            '@@portletstyles'
         )
 
-    def test_akismet_in_controlpanel(self):
+    def test_portlet_styles_in_controlpanel(self):
         """Check that there is an portletstyle entry in the control panel."""
         self.controlpanel = getToolByName(self.portal, "portal_controlpanel")
-        self.failUnless('portletstyle' in [a.getAction(self)['id']
+        self.failUnless('portletstyles' in [a.getAction(self)['id']
                             for a in self.controlpanel.listActions()])
 
     def test_record_portlet_styles(self):
         """Test that the portlet_styles record is in the control panel."""
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IPortletStyleSettings)
-        self.assertEquals(settings.portlet_styles, u"")
-        self.failUnless('portlet_styles' in IPortletStyleSettings)
+        styles = registry.forInterface(IPortletStyles)
+        self.assertEquals(styles.portlet_styles, None)
+        self.failUnless('portlet_styles' in IPortletStyles)
 
 
 def test_suite():

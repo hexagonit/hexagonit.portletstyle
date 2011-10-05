@@ -26,7 +26,6 @@ class TestSetup(IntegrationTestCase):
         self.installer.uninstallProducts(['hexagonit.portletstyle'])
         self.failIf(self.installer.isProductInstalled('hexagonit.portletstyle'))
 
-
     # browserlayer.xml
     def test_browserlayer(self):
         """Test that IPortletStyleLayer is registered."""
