@@ -1,5 +1,4 @@
 def get_portlet_style(self):
-    import pdb; pdb.set_trace( )
     return self.data.portlet_style
 
 
