@@ -15,10 +15,10 @@
   <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
     class to portlets -->
   <monkey:patch
-      description="Patch plone.app.portlets Renderer to have css_class getter"
+      description="Patch plone.app.portlets Renderer to have portlet_style getter"
       class="plone.app.portlets.portlets.base.Renderer"
-      original="css_class"
-      replacement=".patcher.get_css_class"
+      original="portlet_style"
+      replacement=".patcher.get_portlet_style"
       ignoreOriginal="true"
       />
   <monkey:patch

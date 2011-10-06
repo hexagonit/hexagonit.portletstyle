@@ -1,9 +1,10 @@
-def get_css_class(self):
-    return self.data.css_class
+def get_portlet_style(self):
+    import pdb; pdb.set_trace( )
+    return self.data.portlet_style
 
 
 def base_assignment__init__(self, *args, **kwargs):
-    self.css_class = kwargs.get('css_class', '')
+    self.portlet_style = kwargs.get('portlet_style', '')
 
 
 from plone.app.portlets.portlets import base
@@ -13,4 +14,4 @@ def recent_assignment__init__(self, *args, **kwargs):
 
 
 def recent_create(self, data):
-    return base.Assignment(count=data.get('count', ''), css_class=data.get('css_class', ''))
+    return base.Assignment(count=data.get('count', ''), portlet_style=data.get('portlet_style', ''))

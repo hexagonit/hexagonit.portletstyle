@@ -3,10 +3,11 @@ from plone.portlets import interfaces  # import IPortletDataProvider as old
 from zope import schema
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
-Assignment.css_class = -1
+Assignment.portlet_style = -1
 
 
 def initialize(context):
@@ -14,8 +15,10 @@ def initialize(context):
 
 
 class IPortletDataProvider(Interface):
-    css_class = schema.TextLine(title=u'CSS class',
-                                description=u'CSS class description',
-                                required=True,
-                                default=u'')
+    portlet_style = schema.Choice(title=u"Portlet style",
+                             description=u"Select this portlet's' style",
+                             vocabulary = SimpleVocabulary([
+                                   SimpleVocabulary.createTerm(u'male'),
+                                   SimpleVocabulary.createTerm(u'female'),
+                                   ]) )
 interfaces.IPortletDataProvider = IPortletDataProvider
