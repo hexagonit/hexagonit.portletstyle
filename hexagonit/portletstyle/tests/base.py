@@ -35,6 +35,9 @@ class PortletStyleLayer(PloneSandboxLayer):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'hexagonit.portletstyle:default')
 
+        # Login as Manager
+        setRoles(portal, TEST_USER_ID, ('Manager',))
+
     def tearDownZope(self, app):
         """Tear down Zope."""
         z2.uninstallProduct(app, 'hexagonit.portletstyle')
