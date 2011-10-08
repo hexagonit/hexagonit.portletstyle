@@ -9,8 +9,9 @@ def base_assignment__init__(self, *args, **kwargs):
 from plone.app.portlets.portlets import base
 def recent_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
-    self.count = kwargs.get('count', '')
+    self.count = kwargs.get('count', 5)
 
 
+from plone.app.portlets.portlets.recent import Assignment
 def recent_create(self, data):
-    return base.Assignment(count=data.get('count', ''), portlet_style=data.get('portlet_style', ''))
+    return Assignment(count=data.get('count', 5), portlet_style=data.get('portlet_style', ''))
