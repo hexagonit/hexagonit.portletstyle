@@ -1,5 +1,5 @@
 from plone.app.portlets.portlets.base import Assignment
-from plone.portlets import interfaces  # import IPortletDataProvider as old
+from plone.portlets import interfaces
 from zope import schema
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
