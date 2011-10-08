@@ -12,6 +12,13 @@
   
   <include package=".browser" />
 
+  <!-- Register a vocabulary of portlet styles -->
+  <utility
+    component=".vocabulary.StylesVocabularyFactory"
+    name="hexagonit.portletstyle.StylesVocabulary"
+    />
+
+
   <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
     class to portlets -->
   <monkey:patch

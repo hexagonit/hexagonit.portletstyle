@@ -3,7 +3,6 @@ from plone.portlets import interfaces
 from zope import schema
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
-from zope.schema.vocabulary import SimpleVocabulary
 
 
 PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
@@ -15,10 +14,9 @@ def initialize(context):
 
 
 class IPortletDataProvider(Interface):
-    portlet_style = schema.Choice(title=u"Portlet style",
-                             description=u"Select this portlet's' style",
-                             vocabulary = SimpleVocabulary([
-                                   SimpleVocabulary.createTerm(u'male'),
-                                   SimpleVocabulary.createTerm(u'female'),
-                                   ]) )
+    portlet_style = schema.Choice(
+        title=u"Portlet style",
+        description=u"Select this portlet's' style",
+        vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
+    )
 interfaces.IPortletDataProvider = IPortletDataProvider
