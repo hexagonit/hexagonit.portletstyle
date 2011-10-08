@@ -3,8 +3,10 @@
 
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from Products.CMFCore.utils import getToolByName
-from plone.app.portlets.portlets.recent import IRecentPortlet
+from plone.portlets.interfaces import IPortletType
 from zope.component import getUtility
+from plone.app.portlets.portlets import recent
+
 import unittest2 as unittest
 
 
@@ -23,11 +25,11 @@ class TestSelectStyle(IntegrationTestCase):
             del mapping[m]
 
         # add recent-items portlet
-        portlet = getUtility(IRecentPortlet, name='portlets.Recent')
+        portlet = getUtility(IPortletType, name='portlets.Recent')
         addview = mapping.restrictedTraverse('+/' + portlet.addview)
-        addview()
+        addview.createAndAdd(data={})
         self.assertEquals(len(mapping), 1)
-        self.assertTrue(isinstance(mapping.values()[0], portlet.Assignment))
+        self.assertTrue(isinstance(mapping.values()[0], recent.Assignment))
 
 
     def test_foo(self):
