@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
 <registry>
- <records interface="hexagonit.portletstyle.interfaces.IPortletStyles" />
+    <records interface="hexagonit.portletstyle.interfaces.IPortletStyles">
+        <value key="portlet_styles" purge="false">
+            <element>noheader</element>
+            <element>nofooter</element>
+            <element>noheader nofooter</element>
+        </value>
+    </records>
 </registry>

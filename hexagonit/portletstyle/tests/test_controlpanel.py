@@ -50,8 +50,11 @@ class TestControlPanel(IntegrationTestCase):
         """Test that the portlet_styles record is in the control panel."""
         registry = getUtility(IRegistry)
         styles = registry.forInterface(IPortletStyles)
-        self.assertEquals(styles.portlet_styles, None)
         self.failUnless('portlet_styles' in IPortletStyles)
+        self.assertEquals(
+            styles.portlet_styles,
+            ['noheader', 'nofooter', 'noheader nofooter']
+        )
 
 
 def test_suite():
