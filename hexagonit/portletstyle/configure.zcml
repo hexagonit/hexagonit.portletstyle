@@ -7,7 +7,7 @@
     i18n_domain="hexagonit.portletstyle">
 
   <five:registerPackage package="." initialize=".initialize" />
-  <i18n:registerTranslations directory="locales" />
+  <!-- <i18n:registerTranslations directory="locales" /> -->
   <includeDependencies package="." />
   
   <include package=".browser" />
