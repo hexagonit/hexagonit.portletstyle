@@ -50,6 +50,19 @@
       original="create"
       replacement=".patcher.recent_create"
       />
+  <!-- Events portlet -->
+  <monkey:patch
+      description="Patch events portlet's Assignment class"
+      class="plone.app.portlets.portlets.events.Assignment"
+      original="__init__"
+      replacement=".patcher.events_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch events portlet's AddForm class"
+      class="plone.app.portlets.portlets.events.AddForm"
+      original="create"
+      replacement=".patcher.events_create"
+      />
 
   <genericsetup:registerProfile
       name="default"
