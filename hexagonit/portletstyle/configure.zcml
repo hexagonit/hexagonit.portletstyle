@@ -63,6 +63,19 @@
       original="create"
       replacement=".patcher.events_create"
       />
+  <!-- Navigation portlet -->
+  <monkey:patch
+      description="Patch navigation portlet's Assignment class"
+      class="plone.app.portlets.portlets.navigation.Assignment"
+      original="__init__"
+      replacement=".patcher.navigation_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch navigation portlet's AddForm class"
+      class="plone.app.portlets.portlets.navigation.AddForm"
+      original="create"
+      replacement=".patcher.navigation_create"
+      />
 
   <genericsetup:registerProfile
       name="default"
