@@ -54,10 +54,10 @@ class TestSelectStyle(IntegrationTestCase):
     def test_select_style(self):
         """Test that selected style is present in portlet's HTML."""
         # add portlet
-        assignment = self._add_portlet(style='noheader')
+        portlet = self._add_portlet(style='noheader')
 
         # what does Renderer.portlet_style give us?
-        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, assignment), IPortletRenderer)
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
         self.assertEquals(renderer.portlet_style(), 'noheader')
 
         # test HTML
@@ -67,10 +67,10 @@ class TestSelectStyle(IntegrationTestCase):
     def test_no_style_selected(self):
         """Test that nothing breaks if no style was selected."""
         # add portlet
-        assignment = self._add_portlet()
+        portlet = self._add_portlet()
 
         # what does Renderer.portlet_style give us?
-        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, assignment), IPortletRenderer)
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
         self.assertEquals(renderer.portlet_style(), '')
 
         # test HTML
