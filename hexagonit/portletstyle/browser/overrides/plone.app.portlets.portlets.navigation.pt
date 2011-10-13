@@ -1,0 +1,43 @@
+<tal:block i18n:domain="plone">
+<dl class="portlet portletNavigationTree"
+    tal:attributes="class string:portlet portletNavigationTree ${view/portlet_style}"
+    tal:define="root view/navigation_root">
+
+    <dt class="portletHeader"
+        tal:attributes="class python:view.hasName() and 'portletHeader' or 'portletHeader hiddenStructure'">
+        <span class="portletTopLeft"></span>
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${root/absolute_url}/sitemap;"
+           tal:content="view/title"
+           i18n:translate="">Navigation</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+        <ul class="navTree navTreeLevel0">
+            <li tal:define="selectedClass view/root_item_class;
+                            li_class python:selectedClass and ' navTreeCurrentNode' or '';"
+                tal:condition="view/include_top"
+                tal:attributes="class string:navTreeItem navTreeTopNode${li_class}">
+                <div tal:define="rootIsPortal view/root_is_portal;">
+                   <a tal:attributes="href root/absolute_url;
+                                      title root/Description;
+                                      class string:contenttype-plone-site $selectedClass;">
+                   <span tal:omit-tag=""
+                         tal:condition="rootIsPortal"
+                         i18n:translate="tabs_home">Home</span>
+                   <span tal:condition="not:rootIsPortal"
+                         tal:replace="root/Title">Root item title</span>
+                   </a>
+                </div>
+            </li>
+            <li tal:replace="structure view/createNavTree">
+                SUBTREE
+            </li>
+        </ul>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+</tal:block>

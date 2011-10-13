@@ -37,19 +37,6 @@
       />
 
   <!-- Now also patch each portlet's Assignment and AddForm classes -->
-  <!-- Recent Items portlet -->
-  <monkey:patch
-      description="Patch recent-item portlet's Assignment class"
-      class="plone.app.portlets.portlets.recent.Assignment"
-      original="__init__"
-      replacement=".patcher.recent_assignment__init__"
-      />
-  <monkey:patch
-      description="Patch recent-item portlet's AddForm class"
-      class="plone.app.portlets.portlets.recent.AddForm"
-      original="create"
-      replacement=".patcher.recent_create"
-      />
   <!-- Events portlet -->
   <monkey:patch
       description="Patch events portlet's Assignment class"
@@ -75,6 +62,32 @@
       class="plone.app.portlets.portlets.navigation.AddForm"
       original="create"
       replacement=".patcher.navigation_create"
+      />
+  <!-- News portlet -->
+  <monkey:patch
+      description="Patch news portlet's Assignment class"
+      class="plone.app.portlets.portlets.news.Assignment"
+      original="__init__"
+      replacement=".patcher.news_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch news portlet's AddForm class"
+      class="plone.app.portlets.portlets.news.AddForm"
+      original="create"
+      replacement=".patcher.news_create"
+      />
+  <!-- Recent Items portlet -->
+  <monkey:patch
+      description="Patch recent-item portlet's Assignment class"
+      class="plone.app.portlets.portlets.recent.Assignment"
+      original="__init__"
+      replacement=".patcher.recent_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch recent-item portlet's AddForm class"
+      class="plone.app.portlets.portlets.recent.AddForm"
+      original="create"
+      replacement=".patcher.recent_create"
       />
 
   <genericsetup:registerProfile
