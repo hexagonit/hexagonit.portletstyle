@@ -76,3 +76,14 @@ def static_assignment__init__(self, *args, **kwargs):
     self.omit_border = kwargs.get('omit_border', False)
     self.footer = kwargs.get('footer', u"")
     self.more_url = kwargs.get('more_url', u"")
+
+
+# portlet.Collection
+def collection_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.header = kwargs.get('header', u"")
+    self.target_collection = kwargs.get('target_collection', None)
+    self.limit = kwargs.get('limit', None)
+    self.random = kwargs.get('random', None)
+    self.show_more = kwargs.get('show_more', True)
+    self.show_dates = kwargs.get('show_dates', False)

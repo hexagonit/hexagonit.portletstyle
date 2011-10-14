@@ -96,6 +96,13 @@
       original="__init__"
       replacement=".patcher.static_assignment__init__"
       />
+  <!-- Collection portlet -->
+  <monkey:patch
+      description="Patch collection portlet's Assignment class"
+      class="plone.portlet.collection.collection.Assignment"
+      original="__init__"
+      replacement=".patcher.collection_assignment__init__"
+      />
 
   <genericsetup:registerProfile
       name="default"
