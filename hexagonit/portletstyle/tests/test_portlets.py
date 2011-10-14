@@ -4,6 +4,7 @@
 from Products.CMFCore.utils import getToolByName
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from plone.app.portlets import portlets
+from plone.portlet.static import static
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
@@ -116,6 +117,22 @@ class TestPorltets(IntegrationTestCase):
         # test HTML
         renderer.update()
         self.assertIn('<dl class="portlet portletRecent noheader">', renderer.render())
+
+    def test_portlet_static(self):
+        """Test that static-text portlet is patched."""
+        # add portlet
+        portlet = self._add_portlet(
+            name='plone.portlet.static.Static',
+            assignment_class=static.Assignment
+        )
+
+        # what does Renderer.portlet_style give us?
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
+        self.assertEquals(renderer.portlet_style(), 'noheader')
+
+        # test HTML
+        renderer.update()
+        self.assertIn('<dl class="portlet portletStaticText noheader portlet-static-">', renderer.render())
 
 
 def test_suite():

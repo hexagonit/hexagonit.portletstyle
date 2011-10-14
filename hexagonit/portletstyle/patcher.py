@@ -66,3 +66,13 @@ def recent_assignment__init__(self, *args, **kwargs):
 
 def recent_create(self, data):
     return recent.Assignment(count=data.get('count', 5), portlet_style=data.get('portlet_style', u''))
+
+
+# portlet.Static
+def static_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.header = kwargs.get('header', u"")
+    self.text = kwargs.get('text', u"")
+    self.omit_border = kwargs.get('omit_border', False)
+    self.footer = kwargs.get('footer', u"")
+    self.more_url = kwargs.get('more_url', u"")
