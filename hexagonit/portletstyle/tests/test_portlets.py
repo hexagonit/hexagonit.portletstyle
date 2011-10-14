@@ -102,7 +102,7 @@ class TestPorltets(IntegrationTestCase):
         self.assertIn('<dl class="portlet portletNews noheader">', renderer.render())
 
     def test_portlet_recent(self):
-        """Test that news recent is patched."""
+        """Test that recent portlet is patched."""
         # add portlet
         portlet = self._add_portlet(
             name='portlets.Recent',
