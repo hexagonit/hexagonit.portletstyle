@@ -3,6 +3,7 @@ from plone.app.portlets.portlets import events
 from plone.app.portlets.portlets import navigation
 from plone.app.portlets.portlets import news
 from plone.app.portlets.portlets import recent
+from plone.app.portlets.portlets import rss
 
 
 def get_portlet_style(self):
@@ -58,6 +59,19 @@ def recent_assignment__init__(self, *args, **kwargs):
 
 def recent_create(self, data):
     return recent.Assignment(**data)
+
+
+# portlet.Rss
+def rss_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.portlet_title = kwargs.get('portlet_title', u'')
+    self.count = kwargs.get('count', 5)
+    self.url = kwargs.get('url', u'')
+    self.timeout = kwargs.get('timeout', 100)
+
+
+def rss_create(self, data):
+    return rss.Assignment(**data)
 
 
 # portlet.Static

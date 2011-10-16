@@ -13,6 +13,7 @@ from zope.component import getUtility
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
+import mock
 import unittest2 as unittest
 
 
@@ -27,12 +28,12 @@ class TestPorltets(IntegrationTestCase):
         alsoProvides(self.layer['app'].REQUEST, IPortletStyleLayer)
 
         # shortcuts
-        self.request = self.layer['app'].REQUEST
         self.portal = self.layer['portal']
+        self.request = self.portal.REQUEST
         self.view = self.portal.restrictedTraverse('@@plone')
         self.installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.mapping = self.portal.restrictedTraverse('++contextportlets++plone.leftcolumn')
-        self.manager = getUtility(IPortletManager, name='plone.leftcolumn')
+        self.manager = getUtility(IPortletManager, name='plone.leftcolumn', context=self.portal)
 
         # remove all portlets already assigned to left column
         for m in self.mapping.keys():
@@ -118,6 +119,24 @@ class TestPorltets(IntegrationTestCase):
         # test HTML
         renderer.update()
         self.assertIn('<dl class="portlet portletRecent noheader">', renderer.render())
+
+    @mock.patch('plone.app.portlets.portlets.rss.Renderer.initializing', new=False)
+    @mock.patch('plone.app.portlets.portlets.rss.Renderer.enabled', new=True)
+    def test_portlet_rss(self):
+        """Test that rss portlet is patched."""
+        # add portlet
+        portlet = self._add_portlet(
+            name='portlets.rss',
+            assignment_class=portlets.rss.Assignment
+        )
+
+        # what does Renderer.portlet_style give us?
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
+        self.assertEquals(renderer.portlet_style(), 'noheader')
+
+        # test HTML
+        renderer.update()
+        self.assertIn('<dl class="portlet portletRss noheader">', renderer.render())
 
     def test_portlet_static(self):
         """Test that static-text portlet is patched."""

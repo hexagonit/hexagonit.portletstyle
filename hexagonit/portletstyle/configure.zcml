@@ -89,6 +89,19 @@
       original="create"
       replacement=".patcher.recent_create"
       />
+  <!-- RSS portlet -->
+  <monkey:patch
+      description="Patch RSS portlet's Assignment class"
+      class="plone.app.portlets.portlets.rss.Assignment"
+      original="__init__"
+      replacement=".patcher.rss_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch RSS portlet's AddForm class"
+      class="plone.app.portlets.portlets.rss.AddForm"
+      original="create"
+      replacement=".patcher.rss_create"
+      />
   <!-- Static text portlet -->
   <monkey:patch
       description="Patch static-text portlet's Assignment class"
