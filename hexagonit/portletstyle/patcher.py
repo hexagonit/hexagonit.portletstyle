@@ -21,7 +21,7 @@ def events_assignment__init__(self, *args, **kwargs):
 
 
 def events_create(self, data):
-    return events.Assignment(count=data.get('count', 5), state=data.get('state', ('published', )), portlet_style=data.get('portlet_style', u''))
+    return events.Assignment(**data)
 
 
 # portlet.Navigation
@@ -36,15 +36,7 @@ def navigation_assignment__init__(self, *args, **kwargs):
 
 
 def navigation_create(self, data):
-    return navigation.Assignment(
-        name=data.get('name', u""),
-        root=data.get('root', u""),
-        currentFolderOnly=data.get('currentFolderOnly', False),
-        includeTop=data.get('includeTop', False),
-        topLevel=data.get('topLevel', 0),
-        bottomLevel=data.get('bottomLevel', 0),
-        portlet_style=data.get('portlet_style', u'')
-    )
+    return navigation.Assignment(**data)
 
 
 # portlet.News
@@ -55,7 +47,7 @@ def news_assignment__init__(self, *args, **kwargs):
 
 
 def news_create(self, data):
-    return news.Assignment(count=data.get('count', 5), state=data.get('state', ('published', )), portlet_style=data.get('portlet_style', u''))
+    return news.Assignment(**data)
 
 
 # portlet.Recent
@@ -65,7 +57,7 @@ def recent_assignment__init__(self, *args, **kwargs):
 
 
 def recent_create(self, data):
-    return recent.Assignment(count=data.get('count', 5), portlet_style=data.get('portlet_style', u''))
+    return recent.Assignment(**data)
 
 
 # portlet.Static
