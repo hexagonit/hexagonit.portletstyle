@@ -44,11 +44,13 @@ class TestPorltets(IntegrationTestCase):
         for m in self.mapping.keys():
             del self.mapping[m]
 
-    def _add_portlet(self, name=None, assignment_class=None):
+    def _add_portlet(self, name=None, assignment_class=None, data=None):
         portlet = getUtility(IPortletType, name=name)
 
+        data = data or {'portlet_style': 'noheader'}
+
         addview = self.mapping.restrictedTraverse('+/' + portlet.addview)
-        addview.createAndAdd(data={'portlet_style': 'noheader'})
+        addview.createAndAdd(data=data)
 
         # is portlet really there?
         assignment = self.mapping.values()[-1]  # portlet is the last in mapping
@@ -77,7 +79,11 @@ class TestPorltets(IntegrationTestCase):
         # add portlet
         portlet = self._add_portlet(
             name='portlets.Navigation',
-            assignment_class=portlets.navigation.Assignment
+            assignment_class=portlets.navigation.Assignment,
+            data={
+                'portlet_style': 'noheader',
+                'topLevel': 0,  # so the portlet is displayed on root
+            }
         )
 
         # what does Renderer.portlet_style give us?
