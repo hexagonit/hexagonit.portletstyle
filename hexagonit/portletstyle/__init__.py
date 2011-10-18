@@ -21,5 +21,6 @@ class IPortletDataProvider(Interface):
         title=u"Portlet style",
         description=u"Select this portlet's' style",
         vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
+        required=False,
     )
 interfaces.IPortletDataProvider = IPortletDataProvider
