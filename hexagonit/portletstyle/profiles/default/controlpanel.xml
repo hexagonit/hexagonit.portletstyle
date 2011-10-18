@@ -1,20 +1,18 @@
-<?xml version="1.0"?>
-<object
-    name="portal_controlpanel"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="hexagonit.portletstyle"
-    purge="False">
+<?xml version="1.0" ?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="hexagonit.portletstyle"
+        purge="False">
 
-    <configlet
-        title="Portlet Styles"
-        action_id="portletstyles"
-        appId="hexagonit.portletstyle"
-        category="Products"
-        condition_expr=""
-        url_expr="string:${portal_url}/@@portletstyles"
-        visible="True"
-        i18n:attributes="title">
-            <permission>Manage portal</permission>
-    </configlet>
+  <configlet title="Portlet Styles"
+             action_id="portletstyles"
+             appId="hexagonit.portletstyle"
+             category="Products"
+             condition_expr=""
+             url_expr="string:${portal_url}/@@portletstyles"
+             visible="True"
+             i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
 
 </object>

@@ -4,37 +4,22 @@
     xmlns:zope="http://namespaces.zope.org/zope"
     i18n_domain="hexagonit.portletstyle">
 
-    <!-- <include package="plone.app.registry" /> -->
-
     <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
     <include package="z3c.jbot" file="meta.zcml" />
     <browser:jbot directory="overrides" layer="..interfaces.IPortletStyleLayer" />
 
+    <!-- publish the CSS -->
+    <browser:resource
+        name="portletstyle.css"
+        image="portletstyle.css"
+        />
 
-    <!-- Control panel -->
+    <!-- Control panel configlet -->
     <browser:page
         name="portletstyles"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.PortletStylesControlPanel"
         permission="cmf.ManagePortal"
         />
-    <!-- <utility
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        component=".settings.PortletStyleVocabulary"
-        name="hexagonit.portletstyle.PortletStyleVocabulary"
-        />
-    <adapter factory="hexagonit.portletstyle.browser.settings.PortletStyles"/>
-    <browser:page
-        name="portletstyles"
-        for=".interfaces.IPortletStyleEnabled"
-        class=".settings.GallerySettingsForm"
-        permission="cmf.ModifyPortalContent"
-        />
-    <browser:page
-        name="portletstyle-enabled"
-        for="*"
-        class=".settings.GalleryEnabled"
-        permission="zope2.View"
-        /> -->
 
 </configure>

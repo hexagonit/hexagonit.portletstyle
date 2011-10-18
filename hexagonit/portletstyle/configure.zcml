@@ -7,8 +7,8 @@
     i18n_domain="hexagonit.portletstyle">
 
   <five:registerPackage package="." initialize=".initialize" />
-  <!-- <i18n:registerTranslations directory="locales" /> -->
   <includeDependencies package="." />
+  <!-- <i18n:registerTranslations directory="locales" /> -->
   
   <include package=".browser" />
 
@@ -17,7 +17,6 @@
     component=".vocabulary.StylesVocabularyFactory"
     name="hexagonit.portletstyle.StylesVocabulary"
     />
-
 
   <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
     class to portlets -->

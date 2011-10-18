@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+"""Module where all interfaces and schemas live."""
+
 from hexagonit.portletstyle import PortletStyleMessageFactory as _
 from zope.interface import Interface
-from zope import schema
+from zope.schema import ASCIILine
+from zope.schema import List
 
 
 class IPortletStyleLayer(Interface):
@@ -8,14 +12,14 @@ class IPortletStyleLayer(Interface):
 
 
 class IPortletStyles(Interface):
-    """Configuration for portlet CSS class."""
+    """Control panel configuration of available portlet styles."""
 
-    portlet_styles = schema.List(
+    portlet_styles = List(
         title=_(u'label_portlet_styles', default=u'Available portlet styles'),
         description=_(u'description_portlet_styles',
             default=u'Enter portlet styles that users will be able to '
                     u'choose form the dropdown menu when editing portlets. '
-                    u'One class per line. '),
-        value_type=schema.ASCIILine(),
+                    u'One style per line. '),
+        value_type=ASCIILine(),
         required=False,
     )

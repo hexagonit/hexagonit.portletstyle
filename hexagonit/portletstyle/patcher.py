@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Monkey patches to support choosing a style for a portlet."""
+
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
 from plone.app.portlets.portlets import navigation

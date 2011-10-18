@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Base module for unittesting"""
+"""Module where test layers and test cases live."""
 
-import unittest2 as unittest
-
-from hexagonit.portletstyle.interfaces import IPortletStyles
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_ID
-from plone.app.testing import login
-from plone.app.testing import setRoles
 from plone.app.testing import applyProfile
-from plone.registry import Registry
+from plone.app.testing import setRoles
 from plone.testing import z2
+
+import unittest2 as unittest
 
 
 class PortletStyleLayer(PloneSandboxLayer):
@@ -60,4 +56,3 @@ class FunctionalTestCase(unittest.TestCase):
     """Base class for functional tests."""
 
     layer = FUNCTIONAL_TESTING
-

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Control panel configlet for configuring available portlet styles."""
+
 from hexagonit.portletstyle import PortletStyleMessageFactory as _
 from hexagonit.portletstyle.interfaces import IPortletStyles
 from plone.app.registry.browser import controlpanel

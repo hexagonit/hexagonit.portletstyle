@@ -38,6 +38,7 @@ class TestSelectStyle(IntegrationTestCase):
             del self.mapping[m]
 
     def _add_portlet(self, name='portlets.Recent', style=None):
+        """A helper method for quickly adding a portlet."""
         style = style or ''
         portlet = getUtility(IPortletType, name=name)
         count = len(self.mapping)

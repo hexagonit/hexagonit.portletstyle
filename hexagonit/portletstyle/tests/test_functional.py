@@ -79,4 +79,3 @@ def test_suite():
     return unittest.TestSuite([
         DocFileSuite('functional/story.txt'),
         ])
-

@@ -8,9 +8,9 @@ from Products.CMFCore.utils import getToolByName
 from hexagonit.portletstyle.interfaces import IPortletStyles
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from plone.app.testing import logout
+from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
 from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
 
 import unittest2 as unittest
 

@@ -4,8 +4,8 @@
 from Products.CMFCore.utils import getToolByName
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 from plone.app.portlets import portlets
-from plone.portlet.static import static
 from plone.portlet.collection import collection
+from plone.portlet.static import static
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
@@ -40,11 +40,13 @@ class TestPorltets(IntegrationTestCase):
             del self.mapping[m]
 
     def tearDown(self):
+        """Cleanup after running tests."""
         # remove all portlets assigned to left column
         for m in self.mapping.keys():
             del self.mapping[m]
 
     def _add_portlet(self, name=None, assignment_class=None, data=None):
+        """A helper method for quickly adding a portlet."""
         portlet = getUtility(IPortletType, name=name)
 
         data = data or {'portlet_style': 'noheader'}
