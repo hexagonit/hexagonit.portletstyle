@@ -1,3 +1,7 @@
-.noheader dl {
+.noheader .portletHeader {
+    display: none;
+}
+
+.nofooter .portletFooter {
     display: none;
 }
