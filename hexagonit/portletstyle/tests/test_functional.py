@@ -39,6 +39,9 @@ def setUp(self):
     portal = self.globs['portal']
     browser = self.globs['browser']
 
+    portal.invokeFactory('Document', 'foo', title="Foo")
+    portal.invokeFactory('Document', 'bar', title="Bar")
+
     browser.handleErrors = True
     portal.error_log._ignored_exceptions = ()
 
