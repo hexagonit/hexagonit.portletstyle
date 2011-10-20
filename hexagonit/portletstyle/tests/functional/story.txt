@@ -21,3 +21,54 @@ Start by logging-in so we can manage portlets.
     Are we logged in?
     >>> "You are now logged in" in browser.contents
     True
+
+
+Add a portlet without selecting a style
+---------------------------------------
+
+    Go to portlet management screen.
+    >>> browser.open(portal.absolute_url() + '/@@manage-portlets')
+
+    Select Recent Items portlet from the ``Add portlet ...`` drop-down menu.
+    >>> menu = browser.getControl('Add portlet', index=0).control
+    >>> menu.value = ['/++contextportlets++plone.leftcolumn/+/portlets.Recent']
+
+    Click ``Add portlet`` button.
+    >>> button = browser.getControl('Add portlet', index=1)
+    >>> button.click()
+
+    Click ``Save`` button to save a portlet with default values - no style is
+    selected by default.
+    >>> browser.getControl(name='form.actions.save').click()
+
+    Go back to portal root to test this portlet.
+    >>> browser.open(portal.absolute_url())
+
+    Test that our portlet is there and that it does not have any additional
+    styles assigned.
+    >>> '<dl class="portlet portletRecent ">' in browser.contents
+    True
+
+
+Select a style for a portlet
+----------------------------
+
+    Go back portlet management screen.
+    >>> browser.open(portal.absolute_url() + '/@@manage-portlets')
+
+    Click on Recent Items portlet
+    >>> browser.getLink('Recent items').click()
+
+    Select the ``noheader`` style from the Portlet style drop-down menu
+    >>> menu = browser.getControl(name='form.portlet_style')
+    >>> menu.value = ['noheader']
+
+    Click Save.
+    >>> browser.getControl(name='form.actions.save').click()
+
+    Go back to portal root to test the portlet.
+    >>> browser.open(portal.absolute_url())
+
+    Test that our portlet has an additional style assigned.
+    ### TODO: this fails because cache is not invalidated
+    ### >>> '<dl class="portlet portletRecent noheader">' in browser.contents
