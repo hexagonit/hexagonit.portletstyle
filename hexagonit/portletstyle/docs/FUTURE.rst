@@ -1,7 +1,6 @@
 TODO
 ====
 
-* tests
-* default styles along with CSS to support them
-* better styles editing UI: key (CSS class) - value (title) type records
-
+* better @@portletstyles control panel configlet UI: key (CSS class) - value
+  (title) type records
+* also patch non-editable portlets (login, calendar, search, etc.)
