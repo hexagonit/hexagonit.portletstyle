@@ -35,10 +35,6 @@ class TestPorltets(IntegrationTestCase):
         self.mapping = self.portal.restrictedTraverse('++contextportlets++plone.leftcolumn')
         self.manager = getUtility(IPortletManager, name='plone.leftcolumn', context=self.portal)
 
-        # remove all portlets already assigned to left column
-        for m in self.mapping.keys():
-            del self.mapping[m]
-
     def tearDown(self):
         """Cleanup after running tests."""
         # remove all portlets assigned to left column

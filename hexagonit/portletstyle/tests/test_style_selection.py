@@ -33,10 +33,6 @@ class TestSelectStyle(IntegrationTestCase):
         self.mapping = self.portal.restrictedTraverse('++contextportlets++plone.leftcolumn')
         self.manager = getUtility(IPortletManager, name='plone.leftcolumn')
 
-        # remove all portlets already assigned to left column
-        for m in self.mapping.keys():
-            del self.mapping[m]
-
     def _add_portlet(self, name='portlets.Recent', style=None):
         """A helper method for quickly adding a portlet."""
         style = style or ''
