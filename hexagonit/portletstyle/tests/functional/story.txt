@@ -70,5 +70,5 @@ Select a style for a portlet
     >>> browser.open(portal.absolute_url())
 
     Test that our portlet has an additional style assigned.
-    ### TODO: this fails because cache is not invalidated
-    ### >>> '<dl class="portlet portletRecent noheader">' in browser.contents
+    >>> '<dl class="portlet portletRecent noheader">' in browser.contents
+    True
