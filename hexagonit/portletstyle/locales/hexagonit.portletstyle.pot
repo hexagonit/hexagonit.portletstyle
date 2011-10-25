@@ -1,0 +1,37 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-10-25 12:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: hexagonit.portletstyle\n"
+
+#: ./browser/controlpanel.py:13
+msgid "Portlet Style"
+msgstr ""
+
+#: ./profiles/default/controlpanel.xml
+msgid "Portlet Styles"
+msgstr ""
+
+#. Default: "Enter portlet styles that users will be able to choose form the dropdown menu when editing portlets. One style per line. "
+#: ./interfaces.py:19
+msgid "description_portlet_styles"
+msgstr ""
+
+#. Default: "Available portlet styles"
+#: ./interfaces.py:18
+msgid "label_portlet_styles"
+msgstr ""
+
