@@ -10,7 +10,7 @@ from plone.z3cform.textlines import TextLinesFieldWidget
 class PortletStylesEditForm(controlpanel.RegistryEditForm):
 
     schema = IPortletStyles
-    label = _(u"Portlet Style")
+    label = _(u"Portlet Styles")
 
     def updateFields(self):
         super(PortletStylesEditForm, self).updateFields()
