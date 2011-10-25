@@ -1,8 +1,4 @@
 .. include:: README.rst
-.. include:: FUTURE.rst
-.. include:: CREDITS.rst
-.. include:: HISTORY.rst
-.. include:: LICENSE.rst
 
 Translations
 ============
@@ -18,6 +14,13 @@ Sync a translation file with POT:
 .. code-block:: sh
 
     $ find locales -name '*.po' -exec i18ndude sync --pot locales/hexagonit.portletstyle.pot {} \;
+
+
+.. include:: FUTURE.rst
+.. include:: CREDITS.rst
+.. include:: HISTORY.rst
+.. include:: LICENSE.rst
+
 
 Indices and tables
 ==================
