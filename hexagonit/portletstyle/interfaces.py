@@ -18,7 +18,7 @@ class IPortletStyles(Interface):
         title=_(u'label_portlet_styles', default=u'Available portlet styles'),
         description=_(u'description_portlet_styles',
             default=u'Enter portlet styles that users will be able to '
-                    u'choose form the dropdown menu when editing portlets. '
+                    u'choose from the dropdown menu when editing portlets. '
                     u'One style per line. '),
         value_type=ASCIILine(),
         required=False,
