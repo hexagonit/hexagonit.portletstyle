@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0a3 (2011-11-07)
+------------------
+
+- Re-releasing, hoping this fixes problems with jarn.mkrelease.
+  [zupo]
+
+
 1.0a2 (2011-10-27)
 ------------------
 
