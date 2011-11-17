@@ -11,7 +11,7 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
 from zope.schema import Choice
 
-PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
+_ = PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
 Assignment.portlet_style = -1
 
 
@@ -21,8 +21,8 @@ def initialize(context):
 
 class IPortletDataProvider(Interface):
     portlet_style = Choice(
-        title=u"Portlet style",
-        description=u"Select this portlet's' style",
+        title=_(u"Portlet style"),
+        description=_(u"Select this portlet's style"),
         vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
         required=False,
     )

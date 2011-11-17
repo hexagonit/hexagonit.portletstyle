@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-25 12:44+0000\n"
+"POT-Creation-Date: 2011-11-17 13:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,19 @@ msgstr ""
 "Domain: hexagonit.portletstyle\n"
 
 #: ./browser/controlpanel.py:13
-msgid "Portlet Style"
-msgstr ""
-
 #: ./profiles/default/controlpanel.xml
 msgid "Portlet Styles"
 msgstr ""
 
-#. Default: "Enter portlet styles that users will be able to choose form the dropdown menu when editing portlets. One style per line. "
+#: ./__init__.py:24
+msgid "Portlet style"
+msgstr ""
+
+#: ./__init__.py:25
+msgid "Select this portlet's' style"
+msgstr ""
+
+#. Default: "Enter portlet styles that users will be able to choose from the dropdown menu when editing portlets. One style per line. "
 #: ./interfaces.py:19
 msgid "description_portlet_styles"
 msgstr ""
