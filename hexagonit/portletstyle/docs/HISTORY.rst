@@ -1,6 +1,17 @@
 Changelog
 =========
 
+1.0 (2011-11-20)
+----------------
+
+- Slovenian translation.
+  [zupo]
+
+- Added translation support for portlet_style field in patched
+  IPortletDataProvider.
+  [zupo]
+
+
 1.0a3 (2011-11-07)
 ------------------
 
