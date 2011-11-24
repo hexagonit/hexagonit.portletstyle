@@ -8,7 +8,7 @@ benefit of this is that you can easily control which styles you want to have
 in your site with GenericSetup. Just add ``registry.xml`` to
 ``/profiles/default`` folder and reinstall your custom product:
 
-::
+:: xml
 
     <?xml version="1.0"?>
     <registry>
@@ -40,7 +40,7 @@ portlet's assignment's ``__init__()``.
 
 An example of how this can be achieved:
 
-::
+.. code-block:: python
 
     from plone.app.portlets.portlets import base
     class Assignment(base.Assignment):
@@ -58,7 +58,7 @@ Each portlet also has an ``AddForm`` class with a ``create`` method. This method
 must also pass the portlet style as a parameter. To make things simpler, just
 pass in the entire ``data``.
 
-::
+.. code-block:: python
 
     class AddForm(base.AddForm):
         form_fields = form.Fields(IMyCustomPortlet)
@@ -71,7 +71,7 @@ Template
 
 Use the style in the template to assign an additional CSS class to your portlet:
 
-::
+.. code-block:: html
 
     <dl class="portlet portletMyCustom"
         tal:attributes="class string:portlet portletMyCustom ${view/portlet_style}"
