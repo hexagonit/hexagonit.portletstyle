@@ -1,5 +1,27 @@
 .. include:: README.rst
 
+Importing portlet styles from your own package
+==============================================
+
+This package uses `plone.app.registry` to store portlet styles. The added
+benefit of this is that you can easily control which styles you want to have
+in your site with GenericSetup. Just add ``registry.xml`` to
+``/profiles/default`` folder and reinstall your custom product:
+
+::
+
+    <?xml version="1.0"?>
+    <registry>
+      <records interface="hexagonit.portletstyle.interfaces.IPortletStyles">
+        <value key="portlet_styles" purge="false">
+          <element>first style|First Style</element>
+          <element>second style|Second Style</element>
+          <element>third style|Third Custom Portlet Style</element>
+        </value>
+      </records>
+    </registry>
+
+
 Styling third-party portlets
 ============================
 
