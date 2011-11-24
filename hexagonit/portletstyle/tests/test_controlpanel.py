@@ -53,7 +53,7 @@ class TestControlPanel(IntegrationTestCase):
         self.failUnless('portlet_styles' in IPortletStyles)
         self.assertEquals(
             styles.portlet_styles,
-            ['noheader', 'nofooter', 'noheader nofooter']
+            ['noheader|No header', 'nofooter|No footer', 'noheader nofooter|No header and no footer']
         )
 
 
