@@ -21,6 +21,9 @@ in your site with GenericSetup. Just add ``registry.xml`` to
       </records>
     </registry>
 
+If you want to first remove whatever styles are already stored in the registry,
+simply use ``purge="true"``.
+
 
 Styling third-party portlets
 ============================
