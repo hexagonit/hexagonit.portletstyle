@@ -8,7 +8,7 @@ benefit of this is that you can easily control which styles you want to have
 in your site with GenericSetup. Just add ``registry.xml`` to
 ``/profiles/default`` folder and reinstall your custom product:
 
-.. code-block:: XML
+.. code-block:: xml
 
     <?xml version="1.0"?>
     <registry>
@@ -71,7 +71,7 @@ Template
 
 Use the style in the template to assign an additional CSS class to your portlet:
 
-.. code-block:: HTML
+.. code-block:: html
 
     <dl class="portlet portletMyCustom"
         tal:attributes="class string:portlet portletMyCustom ${view/portlet_style}"
