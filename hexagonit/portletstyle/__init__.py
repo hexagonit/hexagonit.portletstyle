@@ -9,6 +9,7 @@ from plone.portlets import interfaces
 from Products.CMFCore.utils import getToolByName
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
+from zope.interface import Invalid
 from zope.schema import Choice
 
 _ = PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
@@ -51,3 +52,21 @@ def new_render_cachekey(fun, self):
         self.data.portlet_style or "",
         fingerprint))
 cache.render_cachekey = new_render_cachekey
+
+# Styles formatting validator for control panel config
+def styles_formatting(styles):
+    """Iterate over all styles and check that they can be sucessfully parsed."""
+    for index, style in enumerate(style):
+        try:
+            _parse_style(style)
+        except:
+            raise Invalid("Style %i is not correctly formatted: %s"
+                          % (index + 1, style))
+    return True
+
+def _parse_style(style):
+    """Parse pipe-delimited style into a css part and title part."""
+    css, title = style.split("|")
+    css.strip()
+    title.strip()
+    return css, title

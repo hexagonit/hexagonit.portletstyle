@@ -2,6 +2,7 @@
 """Vocabulary of styles."""
 
 from hexagonit.portletstyle import PortletStyleMessageFactory as _
+from hexagonit.portletstyle import _parse_style
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from zope.interface import implements
@@ -21,16 +22,17 @@ class StylesVocabulary(object):
         # always have the default "no style" option available
         terms = [SimpleTerm(title=_(u"No style"), value=" ")]
 
-        # add styles from the control panel
+        # add styles from the control panel, but filter out invalid ones
         for style in styles:
             try:
-                value, title = style.split('|')
-            except ValueError:
+                css, title = _parse_style(style)
+            except:
+                # TODO: print WARNING message to logger
                 continue
 
             terms.append(SimpleTerm(
-                    title=title.strip(),
-                    value=value.strip(),
+                    title=title,
+                    value=css,
                 ))
 
         return SimpleVocabulary(terms)
