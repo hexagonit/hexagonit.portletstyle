@@ -13,11 +13,13 @@ from zope.schema import Choice
 
 _ = PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
 
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
 
 # This is needed so that old portlets can be edited
 Assignment.portlet_style = -1
+
 
 # Patch IPortletDataProvider so it has an additional field
 class IPortletDataProvider(Interface):
@@ -28,6 +30,7 @@ class IPortletDataProvider(Interface):
         required=True,
     )
 interfaces.IPortletDataProvider = IPortletDataProvider
+
 
 # Patch render_cachekey so it also takes into account the selected style
 def new_render_cachekey(fun, self):
