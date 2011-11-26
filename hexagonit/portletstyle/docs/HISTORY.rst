@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.1 (2011-11-26)
+----------------
+
+- Human-readable styles.
+  [zupo]
+
+- Improving docs.
+  [zupo]
+
+
 1.0 (2011-11-20)
 ----------------
 
