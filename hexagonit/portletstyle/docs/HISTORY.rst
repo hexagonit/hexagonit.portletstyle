@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.1.1 (2011-11-26)
+------------------
+
+- Re-releasing because README syntax was broken.
+  [zupo]
+
+
 1.1 (2011-11-26)
 ----------------
 
