@@ -7,3 +7,4 @@ TODO
 * document how to use GS to import styles with a third-party product
 * maybe patch non-editable portlets (login, calendar, search, etc.)
 * check how `collective.weightedportlets` patches portlets and learn from it
+
