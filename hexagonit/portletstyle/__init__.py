@@ -2,11 +2,11 @@
 """Init and utils."""
 
 from Acquisition import aq_inner
-from Products.CMFCore.utils import getToolByName
 from plone.app.portlets import cache
 from plone.app.portlets.cache import get_language
 from plone.app.portlets.portlets.base import Assignment
 from plone.portlets import interfaces
+from Products.CMFCore.utils import getToolByName
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
 from zope.schema import Choice
