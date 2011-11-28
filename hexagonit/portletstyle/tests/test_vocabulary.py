@@ -19,7 +19,7 @@ class TestVocabularyUnit(unittest.TestCase):
         from hexagonit.portletstyle.vocabulary import StylesVocabulary
         return list(StylesVocabulary()(None))
 
-    @mock.patch('zope.component.getUtility')
+    @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
     def test_empty(self, utility):
         """Test that we have the 'no style' vocabulary item available even
         if there are no styles saved in control panel."""
@@ -30,7 +30,7 @@ class TestVocabularyUnit(unittest.TestCase):
         self.assertEquals(1, len(terms))
         self.assertEquals("No style", terms[0].title)
 
-    @mock.patch('zope.component.getUtility')
+    @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
     def test_filtering_invalid_delimiters(self, utility):
         """Test that invalid delimiters don't break the vocabulary but rather
         simply get filtered out.
