@@ -42,7 +42,7 @@ class TestVocabularyUnit(unittest.TestCase):
         ]}
         terms = self._get_terms()
 
-        # apart from the "no style" term, we should have one more term
+        # Apart from the "no style" term, we should have one more term
         # for one valid line in styles specified above; other lines get skipped
         self.assertEquals(2, len(terms))
         self.assertEquals("No style", terms[0].title)
