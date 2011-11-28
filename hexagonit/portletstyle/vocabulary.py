@@ -19,7 +19,7 @@ class StylesVocabulary(object):
         styles = registry['hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles']
 
         # always have the default "no style" option available
-        terms = [SimpleTerm(title=_(u"No style"), value="")]
+        terms = [SimpleTerm(title=_(u"No style"), value=" ")]
 
         # add styles from the control panel
         for style in styles:

@@ -37,6 +37,10 @@ Add a portlet without selecting a style
     >>> button = browser.getControl('Add portlet', index=1)
     >>> button.click()
 
+    Select the ``No style`` style from the Portlet style drop-down menu.
+    >>> menu = browser.getControl(name='form.portlet_style')
+    >>> menu.value = [' ']
+
     Click ``Save`` button to save a portlet with default values - no style is
     selected by default.
     >>> browser.getControl(name='form.actions.save').click()
@@ -46,7 +50,7 @@ Add a portlet without selecting a style
 
     Test that our portlet is there and that it does not have any additional
     styles assigned.
-    >>> '<dl class="portlet portletRecent ">' in browser.contents
+    >>> '<dl class="portlet portletRecent  ">' in browser.contents
     True
 
 
@@ -59,7 +63,7 @@ Select a style for a portlet
     Click on Recent Items portlet
     >>> browser.getLink('Recent items').click()
 
-    Select the ``noheader`` style from the Portlet style drop-down menu
+    Select the ``noheader`` style from the Portlet style drop-down menu.
     >>> menu = browser.getControl(name='form.portlet_style')
     >>> menu.value = ['noheader']
 
