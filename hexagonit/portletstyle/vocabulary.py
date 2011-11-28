@@ -10,6 +10,10 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 
+import logging
+
+logger = logging.getLogger("hexagonit.portletstyle")
+
 
 class StylesVocabulary(object):
     """Vocabulary factory of portlet styles read from control panel registry."""
@@ -27,7 +31,7 @@ class StylesVocabulary(object):
             try:
                 css, title = _parse_style(style)
             except:
-                # TODO: print WARNING message to logger
+                logger.warn("Filtered out a style because it cannot be parsed: '%s'" % style)
                 continue
 
             terms.append(SimpleTerm(
