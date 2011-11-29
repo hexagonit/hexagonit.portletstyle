@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2 (2011-11-29)
+1.2 (Unreleased)
 ----------------
 
 - Renamed ``No style`` default style into ``Default style`` and set it as
