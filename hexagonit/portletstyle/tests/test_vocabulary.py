@@ -14,10 +14,10 @@ styles = 'hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles'
 class TestVocabularyUnit(unittest.TestCase):
     """Light-weight unit tests for how values from control panel get parsed."""
 
-    def _get_terms(self):
+    def _get_terms(self, context=None):
         """Prepare an instance of StylesVocabulary and return it's terms."""
         from hexagonit.portletstyle.vocabulary import StylesVocabulary
-        return list(StylesVocabulary()(None))
+        return list(StylesVocabulary()(context))
 
     def _prepare_logger(self, level='WARN'):
         """Set a certain logging level and add a handler that can be used
@@ -90,6 +90,25 @@ class TestVocabularyUnit(unittest.TestCase):
         log.seek(0)
         entries = log.readlines()
         self.assertEquals(0, len(entries))
+
+    @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
+    def test_append_style_from_portlet(self, utility):
+        """If a portlet has a style assigned that is no longer listed in
+        portlet_styles, than we need to add it to the drop-down menu, so it's
+        still possible to select it.
+        """
+
+        portlet = mock.Mock(spec='portlet_style'.split())
+        portlet.portlet_style = 'bar'
+
+        utility.return_value = {styles: ['foo|Foo']}
+        terms = self._get_terms(portlet)
+
+        # 'Default style' + 'Foo' from the list + 'bar' from the portlet
+        self.assertEquals(3, len(terms))
+        self.assertEquals("Default style", terms[0].title)
+        self.assertEquals("Foo", terms[1].title)
+        self.assertEquals("bar", terms[2].title)
 
 
 class TestVocabularyIntegration(IntegrationTestCase):

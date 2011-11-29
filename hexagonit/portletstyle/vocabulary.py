@@ -48,6 +48,15 @@ class StylesVocabulary(object):
                     value=css,
                 ))
 
+        # if a portlet has a style assigned that is no longer listed in
+        # portlet_styles, than we need to add it to the drop-down menu,
+        # so it's still possible to select it
+        if hasattr(context, 'portlet_style') and not context.portlet_style in [t.value for t in terms]:
+            terms.append(SimpleTerm(
+                    title=context.portlet_style,
+                    value=context.portlet_style,
+                ))
+
         return SimpleVocabulary(terms)
 
 
