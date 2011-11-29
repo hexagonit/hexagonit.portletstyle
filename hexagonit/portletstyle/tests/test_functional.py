@@ -76,6 +76,10 @@ def DocFileSuite(testfile, flags=FLAGS, setUp=setUp, layer=FUNCTIONAL_TESTING):
 
 
 def test_suite():
+    import hexagonit.portletstyle
+    from zope.testing import doctest
+
     return unittest.TestSuite([
         DocFileSuite('functional/story.txt'),
+        doctest.DocTestSuite(hexagonit.portletstyle),
         ])

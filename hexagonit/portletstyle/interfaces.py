@@ -7,6 +7,7 @@ from zope.schema import ASCIILine
 from zope.schema import List
 from hexagonit.portletstyle import styles_formatting
 
+
 class IPortletStyleLayer(Interface):
     """Marker interface for defining a Zope 3 browser layer."""
 

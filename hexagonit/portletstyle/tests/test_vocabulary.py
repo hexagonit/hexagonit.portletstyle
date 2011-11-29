@@ -19,6 +19,18 @@ class TestVocabularyUnit(unittest.TestCase):
         from hexagonit.portletstyle.vocabulary import StylesVocabulary
         return list(StylesVocabulary()(None))
 
+    def _prepare_logger(self, level='WARN'):
+        """Set a certain logging level and add a handler that can be used
+        for inspecting what was written to log."""
+        from StringIO import StringIO
+        import logging
+
+        log = StringIO()
+        logger = logging.getLogger('hexagonit.portletstyle')
+        logger.addHandler(logging.StreamHandler(log))
+        logger.setLevel(logging.WARN)
+        return log
+
     @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
     def test_empty(self, utility):
         """Test that we have the 'no style' vocabulary item available even
@@ -31,10 +43,12 @@ class TestVocabularyUnit(unittest.TestCase):
         self.assertEquals("No style", terms[0].title)
 
     @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
-    def test_filtering_invalid_delimiters(self, utility):
+    def test_filter_invalid_delimiters(self, utility):
         """Test that invalid delimiters don't break the vocabulary but rather
         simply get filtered out.
         """
+        log = self._prepare_logger()
+
         utility.return_value = {styles: [
             'no_delimiter',
             'valid delimiter|Valid delimiter',
@@ -43,10 +57,38 @@ class TestVocabularyUnit(unittest.TestCase):
         terms = self._get_terms()
 
         # Apart from the "no style" term, we should have one more term
-        # for one valid line in styles specified above; other lines get skipped
+        # for one valid line in styles specified above; other lines get filtered
         self.assertEquals(2, len(terms))
         self.assertEquals("No style", terms[0].title)
         self.assertEquals("Valid delimiter", terms[1].title)
+
+        # Two styles get skipped and there should be a warning in logger
+        # for both
+        log.seek(0)
+        entries = log.readlines()
+        self.assertEquals(entries[0], "Filtered out a style because it cannot be parsed: 'no_delimiter'\n")
+        self.assertEquals(entries[1], "Filtered out a style because it cannot be parsed: 'too|much|delimiters'\n")
+
+    @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
+    def test_ignore_empty_lines(self, utility):
+        """Test that empty lines are simply ignored."""
+        log = self._prepare_logger()
+
+        utility.return_value = {styles: [
+            '',
+            ' ',
+            '        ',
+        ]}
+        terms = self._get_terms()
+
+        # Only the default 'No style' style should be in terms
+        self.assertEquals(1, len(terms))
+        self.assertEquals("No style", terms[0].title)
+
+        # Empty lines are ignored without any log entries.
+        log.seek(0)
+        entries = log.readlines()
+        self.assertEquals(0, len(entries))
 
 
 class TestVocabularyIntegration(IntegrationTestCase):
