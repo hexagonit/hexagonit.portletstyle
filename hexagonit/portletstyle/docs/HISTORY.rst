@@ -1,8 +1,12 @@
 Changelog
 =========
 
-1.2 (Unreleased)
+1.2 (2011-11-29)
 ----------------
+
+- If a portlet has a style assigned that is no longer listed in portlet_styles,
+  than it is added to the drop-down menu, so it's still possible to select it.
+  [zupo]
 
 - Renamed ``No style`` default style into ``Default style`` and set it as
   default selected value for the Styles drop-down menu.
