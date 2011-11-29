@@ -16,8 +16,9 @@ class PortletStylesEditForm(controlpanel.RegistryEditForm):
         super(PortletStylesEditForm, self).updateFields()
 
     def updateWidgets(self):
-        self.fields["portlet_styles"].widgetFactory = TextLinesFieldWidget
         super(PortletStylesEditForm, self).updateWidgets()
+        self.fields["portlet_styles"].widgetFactory = TextLinesFieldWidget
+        self.widgets["portlet_styles"].rows = 12
 
 
 class PortletStylesControlPanel(controlpanel.ControlPanelFormWrapper):
