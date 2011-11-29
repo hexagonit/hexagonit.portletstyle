@@ -208,7 +208,7 @@ def _is_valid_css_class(string):
     >>> _is_valid_css_class('123leading-numbers')
     False
     """
-    exp = '^-?[_a-zA-Z][_a-zA-Z0-9-]+$'
-    if re.match(exp, string):
+    exp = re.compile('^-?[_a-zA-Z][_a-zA-Z0-9-]+$')
+    if exp.match(string):
         return True
     return False
