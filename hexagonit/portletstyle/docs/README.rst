@@ -32,9 +32,9 @@ Default portlet styles
 
 By default, this package gives you three default portlet styles:
 
-* ``noheader``
-* ``nofooter``
-* ``noheader nofooter``
+* ``No header``
+* ``No footer``
+* ``No header and no footer``
 
 
 Managing available portlet styles
@@ -44,6 +44,15 @@ You can add, edit and remove available portlet styles by going to the `Plone
 Control Panel` and clicking on the ``Portlet Styles`` configlet. Pointing your
 browser directly to ``http://<zope_ip>:<zope_port>/<plone_id>/@@portletstyles``
 also does the trick.
+
+Here, you can enter your styles, one by line, with a pipe (``|``) character
+delimiting CSS class and style title. For example, a line ``dummy|Dummy style``
+would produce a ``Dummy style`` drop-down menu item that would give the portlet
+an additional CSS class of ``foo``.
+
+Lines are checked for formatting and validity of CSS classes. One style can have
+multiple CSS classes, for example, the following is valid:
+``one two|Double class style``.
 
 
 Supported portlets
