@@ -31,6 +31,7 @@ class IPortletDataProvider(Interface):
         description=_(u"Select this portlet's style"),
         vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
         required=True,
+        default=" ",  # This makes the 'Default style' selected by default
     )
 interfaces.IPortletDataProvider = IPortletDataProvider
 

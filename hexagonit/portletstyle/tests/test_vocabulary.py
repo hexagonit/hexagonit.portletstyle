@@ -33,14 +33,15 @@ class TestVocabularyUnit(unittest.TestCase):
 
     @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
     def test_empty(self, utility):
-        """Test that we have the 'no style' vocabulary item available even
+        """Test that we have the 'default style' vocabulary item available even
         if there are no styles saved in control panel."""
         utility.return_value = {styles: []}
         terms = self._get_terms()
 
-        # only the "no style" term is here, which is injected as the first item
+        # only the "default style" term is here, which is injected
+        # as the first item
         self.assertEquals(1, len(terms))
-        self.assertEquals("No style", terms[0].title)
+        self.assertEquals("Default style", terms[0].title)
 
     @mock.patch('hexagonit.portletstyle.vocabulary.getUtility')
     def test_filter_invalid_delimiters(self, utility):
@@ -56,10 +57,10 @@ class TestVocabularyUnit(unittest.TestCase):
         ]}
         terms = self._get_terms()
 
-        # Apart from the "no style" term, we should have one more term
+        # Apart from the "default style" term, we should have one more term
         # for one valid line in styles specified above; other lines get filtered
         self.assertEquals(2, len(terms))
-        self.assertEquals("No style", terms[0].title)
+        self.assertEquals("Default style", terms[0].title)
         self.assertEquals("Valid delimiter", terms[1].title)
 
         # Two styles get skipped and there should be a warning in logger
@@ -81,9 +82,9 @@ class TestVocabularyUnit(unittest.TestCase):
         ]}
         terms = self._get_terms()
 
-        # Only the default 'No style' style should be in terms
+        # Only the default 'Default style' style should be in terms
         self.assertEquals(1, len(terms))
-        self.assertEquals("No style", terms[0].title)
+        self.assertEquals("Default style", terms[0].title)
 
         # Empty lines are ignored without any log entries.
         log.seek(0)
@@ -111,7 +112,7 @@ class TestVocabularyIntegration(IntegrationTestCase):
         vocabulary = vocabularyFactory(self.portal)
         terms = list(vocabulary)
 
-        # "no style" + 3 default styles from registry.xml
+        # "default style" + 3 default styles from registry.xml
         self.assertEquals(4, len(terms))
 
         # are default styles from registry.xml here?

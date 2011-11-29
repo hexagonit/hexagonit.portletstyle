@@ -26,8 +26,8 @@ class StylesVocabulary(object):
         registry = getUtility(IRegistry)
         styles = registry['hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles']
 
-        # always have the default "no style" option available
-        terms = [SimpleTerm(title=_(u"No style"), value=" ")]
+        # always have the default "default style" option available
+        terms = [SimpleTerm(title=_(u"Default style"), value=" ")]
 
         # add styles from the control panel, but filter out invalid ones
         for style in styles:

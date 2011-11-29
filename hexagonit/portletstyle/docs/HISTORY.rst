@@ -5,7 +5,7 @@ Changelog
 ----------------
 
 - Renamed ``No style`` default style into ``Default style`` and set it as
-  defaul selected value for Styles drop-down menu.
+  default selected value for the Styles drop-down menu.
   [zupo]
 
 - Styles formatting and CSS class validation.
