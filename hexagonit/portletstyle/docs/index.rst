@@ -88,7 +88,7 @@ Rebuild POT:
 
 .. code-block:: sh
 
-    $ i18ndude rebuild-pot --pot locales/hexagonit.portletstyle.pot --merge locales/manual.pot --create hexagonit.portletstyle .
+    $ i18ndude rebuild-pot --pot locales/hexagonit.portletstyle.pot --create hexagonit.portletstyle .
 
 Sync a translation file with POT:
 
