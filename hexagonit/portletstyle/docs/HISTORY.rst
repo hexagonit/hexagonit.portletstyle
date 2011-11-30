@@ -1,6 +1,18 @@
 Changelog
 =========
 
+1.3 (Unreleased)
+----------------
+
+- Don't break portlets if this product is installed in buildout but not
+  installed with QuickInstaller.
+  [zupo]
+
+- Cchange default value of portlet_style field to '`` ``' to it's the same as the
+  `Defaul value` we inject into the drop-down menu.
+  [zupo]
+
+
 1.2 (2011-11-29)
 ----------------
 
