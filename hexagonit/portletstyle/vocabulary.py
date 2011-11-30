@@ -24,7 +24,13 @@ class StylesVocabulary(object):
 
     def __call__(self, context):
         registry = getUtility(IRegistry)
-        styles = registry['hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles']
+        try:
+            styles = registry['hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles']
+        except KeyError:
+            # if portlet_styles field is not found in plone.app.registry, just
+            # return an empty list -> probably the product is registered (zcml)
+            # but not installed (GenericSetup)
+            styles = []
 
         # always have the default "default style" option available
         terms = [SimpleTerm(title=_(u"Default style"), value=" ")]
