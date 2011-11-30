@@ -14,9 +14,9 @@ in your site with GenericSetup. Just add ``registry.xml`` to
     <registry>
       <records interface="hexagonit.portletstyle.interfaces.IPortletStyles">
         <value key="portlet_styles" purge="false">
-          <element>first style|First Style</element>
-          <element>second style|Second Style</element>
-          <element>third style|Third Custom Portlet Style</element>
+          <element>first-style|First style</element>
+          <element>secondStyle|Second style</element>
+          <element>multi style|Multiple CSS classes style</element>
         </value>
       </records>
     </registry>
