@@ -21,7 +21,7 @@ def initialize(context):
     """Initializer called when used as a Zope 2 product."""
 
 # This is needed so that old portlets can be edited
-Assignment.portlet_style = -1
+Assignment.portlet_style = u' '
 
 
 # Patch IPortletDataProvider so it has an additional field

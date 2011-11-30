@@ -14,7 +14,7 @@ def get_portlet_style(self):
 
 
 def base_assignment__init__(self, *args, **kwargs):
-    self.portlet_style = kwargs.get('portlet_style', u'')
+    self.portlet_style = kwargs.get('portlet_style', u' ')
 
 
 # portlet.Events
