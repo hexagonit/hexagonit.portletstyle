@@ -21,9 +21,7 @@ class PortletStyleLayer(PloneSandboxLayer):
         """Set up Zope."""
         # Load ZCML
         import hexagonit.portletstyle
-        import plone.app.contentlisting
         self.loadZCML(package=hexagonit.portletstyle)
-        self.loadZCML(package=plone.app.contentlisting)
         z2.installProduct(app, 'hexagonit.portletstyle')
 
     def setUpPloneSite(self, portal):
