@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3 (Unreleased)
+1.3 (2011-12-02)
 ----------------
 
 - Don't break portlets if this product is installed in buildout but not
