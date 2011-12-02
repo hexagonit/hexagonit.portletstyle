@@ -8,7 +8,7 @@ Changelog
   installed with QuickInstaller.
   [zupo]
 
-- Cchange default value of portlet_style field to '`` ``' to it's the same as the
+- Change default value of portlet_style field to `` `` so it's the same as the
   `Defaul value` we inject into the drop-down menu.
   [zupo]
 
