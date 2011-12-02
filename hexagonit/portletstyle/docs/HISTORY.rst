@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.3.1 (2011-12-02)
+------------------
+
+- Fixed reStructuredText syntax errors in HISTORY.
+  [zupo]
+
+
 1.3 (2011-12-02)
 ----------------
 
