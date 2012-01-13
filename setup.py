@@ -19,7 +19,7 @@ long_description = (
 
 setup(name='hexagonit.portletstyle',
       version=version,
-      description="Assign a CSS style to portlet",
+      description="Assign a CSS style to a portlet",
       long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
