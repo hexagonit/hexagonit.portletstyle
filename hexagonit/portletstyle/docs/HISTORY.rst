@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.2 (Unreleased)
+1.3.2 (2012-01-13)
 ------------------
 
 - Patch search portlet.
