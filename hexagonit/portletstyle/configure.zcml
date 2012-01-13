@@ -9,7 +9,7 @@
   <five:registerPackage package="." initialize=".initialize" />
   <includeDependencies package="." />
   <i18n:registerTranslations directory="locales" />
-  
+
   <include package=".browser" />
 
   <!-- Register a vocabulary of portlet styles -->
