@@ -142,6 +142,22 @@ class TestPorltets(IntegrationTestCase):
         renderer.update()
         self.assertIn('<dl class="portlet portletRss noheader">', renderer.render())
 
+    def test_portlet_search(self):
+        """Test that Search portlet is patched."""
+        # add portlet
+        portlet = self._add_portlet(
+            name='portlets.Search',
+            assignment_class=portlets.search.Assignment
+        )
+
+        # what does Renderer.portlet_style give us?
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
+        self.assertEquals(renderer.portlet_style(), 'noheader')
+
+        # test HTML
+        renderer.update()
+        self.assertIn('<dl class="portlet portletSearch noheader">', renderer.render())
+
     def test_portlet_static(self):
         """Test that static-text portlet is patched."""
         # add portlet

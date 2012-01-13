@@ -7,6 +7,7 @@ from plone.app.portlets.portlets import navigation
 from plone.app.portlets.portlets import news
 from plone.app.portlets.portlets import recent
 from plone.app.portlets.portlets import rss
+from plone.app.portlets.portlets import search
 
 
 def get_portlet_style(self):
@@ -75,6 +76,16 @@ def rss_assignment__init__(self, *args, **kwargs):
 
 def rss_create(self, data):
     return rss.Assignment(**data)
+
+
+# portlet.Search
+def search_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.enableLivesearch = kwargs.get('enableLivesearch', u'')
+
+
+def search_create(self, data):
+    return search.Assignment(**data)
 
 
 # portlet.Static

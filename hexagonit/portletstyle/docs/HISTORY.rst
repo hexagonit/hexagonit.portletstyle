@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.3.2 (Unreleased)
+------------------
+
+- Patch search portlet.
+  [zupo]
+
+
 1.3.1 (2011-12-02)
 ------------------
 

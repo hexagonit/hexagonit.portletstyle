@@ -61,12 +61,13 @@ Supported portlets
 As of this moment, the following portlets are supported (as in, you can select
 a style when editing them):
 
+* `Collection portlet`
 * `Events portlet`
 * `Navigation portlet`
 * `News portlet`
 * `Recently changed items portlet`
 * `RSS portlet`
-* `Collection portlet`
+* `Search portlet`
 * `Static text portlet`
 
 The rest of out-of-the-box Plone portlets are non-editable ones as you normally
@@ -78,5 +79,4 @@ portlets *do not support* choosing a style for them:
 * `Language portlet`
 * `Login portlet`
 * `Review portlet`
-* `Search portlet`
 

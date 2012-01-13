@@ -101,6 +101,19 @@
       original="create"
       replacement=".patcher.rss_create"
       />
+  <!-- Search portlet -->
+  <monkey:patch
+      description="Patch Search portlet's Assignment class"
+      class="plone.app.portlets.portlets.search.Assignment"
+      original="__init__"
+      replacement=".patcher.search_assignment__init__"
+      />
+  <monkey:patch
+      description="Patch Search portlet's AddForm class"
+      class="plone.app.portlets.portlets.search.AddForm"
+      original="create"
+      replacement=".patcher.search_create"
+      />
   <!-- Static text portlet -->
   <monkey:patch
       description="Patch static-text portlet's Assignment class"
