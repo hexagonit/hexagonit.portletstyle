@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-11-29 09:24+0000\n"
+"POT-Creation-Date: 2012-01-24 05:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: hexagonit.portletstyle\n"
 
-#: ./vocabulary.py:30
+#: ./vocabulary.py:36
 msgid "Default style"
 msgstr ""
 
