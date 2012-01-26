@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.3.3 (xxxx-xx-xx)
+------------------
+
+- Added Finnish translations.
+  [dokai]
+
 1.3.2 (2012-01-13)
 ------------------
 
