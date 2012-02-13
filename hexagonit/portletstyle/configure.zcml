@@ -129,6 +129,14 @@
       replacement=".patcher.collection_assignment__init__"
       />
 
+  <!-- collective.quickupload portlet -->
+  <monkey:patch
+      description="Patch quickupload portlet's Assignment class"
+      class="collective.quickupload.portlat.quickuploadportlet.Assignment"
+      original="__init__"
+      replacement=".patcher.portlet_quickupload_assignment__init__"
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="hexagonit.portletstyle"

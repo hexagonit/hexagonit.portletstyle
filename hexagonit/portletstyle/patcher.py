@@ -107,3 +107,11 @@ def collection_assignment__init__(self, *args, **kwargs):
     self.random = kwargs.get('random', None)
     self.show_more = kwargs.get('show_more', True)
     self.show_dates = kwargs.get('show_dates', False)
+
+
+# portlet.quickupload
+def portlet_quickupload_assignment__init__(self, portlet_style, header="", upload_portal_type='auto', upload_media_type=''):
+    self.portlet_style = portlet_style
+    self.header = header
+    self.upload_portal_type = upload_portal_type
+    self.upload_media_type = upload_media_type
