@@ -132,7 +132,7 @@
   <!-- collective.quickupload portlet -->
   <monkey:patch
       description="Patch quickupload portlet's Assignment class"
-      class="collective.quickupload.portlat.quickuploadportlet.Assignment"
+      class="collective.quickupload.portlet.quickuploadportlet.Assignment"
       original="__init__"
       replacement=".patcher.portlet_quickupload_assignment__init__"
       />
