@@ -1,9 +1,10 @@
 Changelog
 =========
 
-1.3.3 (xxxx-xx-xx)
+1.3.3 (2012-02-16)
 ------------------
 
+- Quick Upload patching [rnd]
 - Added Finnish translations.
   [dokai]
 
