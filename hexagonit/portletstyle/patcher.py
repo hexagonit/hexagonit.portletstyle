@@ -110,7 +110,7 @@ def collection_assignment__init__(self, *args, **kwargs):
 
 
 # portlet.quickupload
-def portlet_quickupload_assignment__init__(self, portlet_style, header="", upload_portal_type='auto', upload_media_type=''):
+def portlet_quickupload_assignment__init__(self, portlet_style="", header="", upload_portal_type="auto", upload_media_type=""):
     self.portlet_style = portlet_style
     self.header = header
     self.upload_portal_type = upload_portal_type

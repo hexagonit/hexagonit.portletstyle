@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.3.4 (2012-02-29)
+------------------
+
+- Quick Upload patching: made compatible with GS [rnd]
+
 1.3.3 (2012-02-16)
 ------------------
 
