@@ -7,8 +7,6 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 
-version = read('hexagonit', 'portletstyle', 'version.txt').strip()
-
 long_description = (
     read('hexagonit', 'portletstyle', 'docs', 'README.rst') +
     read('hexagonit', 'portletstyle', 'docs', 'FUTURE.rst') +

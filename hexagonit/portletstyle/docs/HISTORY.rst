@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.3.5 (2012-03-06)
+------------------
+
+- Dependency to collective.quickupload added. [taito]
+- version.txt file removed. [taito]
+
 1.3.4 (2012-02-29)
 ------------------
 
