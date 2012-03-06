@@ -18,7 +18,7 @@ long_description = (
 
 
 setup(name='hexagonit.portletstyle',
-      version=version,
+      version='1.3.5',
       description="Assign a CSS style to a portlet",
       long_description=long_description,
       # Get more strings from
@@ -38,6 +38,7 @@ setup(name='hexagonit.portletstyle',
       zip_safe=False,
       install_requires=[
           'collective.monkeypatcher',
+          'collective.quickupload',
           'manuel',
           'mock',
           'plone.app.registry',
