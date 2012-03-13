@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.3.6 (xxxx-xx-xx)
+------------------
+
+- Customized the collective.quickupload portlet so that the portlet style
+  selection gets applied. Previously, the portlet style selection was persisted
+  but never used.
+  [dokai]
+
 1.3.5 (2012-03-06)
 ------------------
 
