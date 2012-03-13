@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.6 (xxxx-xx-xx)
+1.3.6 (2012-03-13)
 ------------------
 
 - Customized the collective.quickupload portlet so that the portlet style
