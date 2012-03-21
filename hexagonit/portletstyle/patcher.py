@@ -115,3 +115,18 @@ def portlet_quickupload_assignment__init__(self, portlet_style="", header="", up
     self.header = header
     self.upload_portal_type = upload_portal_type
     self.upload_media_type = upload_media_type
+
+
+# qi.portlet.TagClouds
+def portlet_TagClouds_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.header = kwargs.get('header', u"")
+    self.portletTitle = kwargs.get('portletTitle', 'TagCloud')
+    self.levels = kwargs.get('levels', 5)
+    self.count = kwargs.get('count', 0)
+    self.restrictSubjects = kwargs.get('restrictSubjects', [])
+    self.filterSubjects = kwargs.get('filterSubjects', [])
+    self.restrictTypes = kwargs.get('restrictTypes', [])
+    self.wfStates = kwargs.get('wfStates', [])
+    self.refreshInterval = kwargs.get('refreshInterval', 3600)
+    self.root = kwargs.get('root', u'')

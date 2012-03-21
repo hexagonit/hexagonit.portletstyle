@@ -137,6 +137,14 @@
       replacement=".patcher.portlet_quickupload_assignment__init__"
       />
 
+  <!-- qi.portlet.TagClouds -->
+  <monkey:patch
+      description="Patch TagClouds portlet's Assignment class"
+      class="qi.portlet.TagClouds.tagcloudportlet.Assignment"
+      original="__init__"
+      replacement=".patcher.portlet_TagClouds_assignment__init__"
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="hexagonit.portletstyle"

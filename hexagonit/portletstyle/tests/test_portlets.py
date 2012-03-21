@@ -190,6 +190,40 @@ class TestPorltets(IntegrationTestCase):
         renderer.update()
         self.assertIn('<dl class="portlet portletCollection noheader portlet-collection-">', renderer.render())
 
+    def test_portlet_quickupload(self):
+        """Test that quickupload portlet is patched."""
+        from collective.quickupload.portlet.quickuploadportlet import Assignment
+        # add portlet
+        portlet = self._add_portlet(
+            name='collective.quickupload.QuickUploadPortlet',
+            assignment_class=Assignment
+        )
+
+        # what does Renderer.portlet_style give us?
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
+        self.assertEquals(renderer.portlet_style(), 'noheader')
+
+        # test HTML
+        renderer.update()
+        self.assertIn('<dl class="portlet QuickUploadPortlet noheader">', renderer.render())
+
+    def test_portlet_TagClouds(self):
+        """Test that TagClouds portlet is patched."""
+        from qi.portlet.TagClouds.tagcloudportlet import Assignment
+        # add portlet
+        portlet = self._add_portlet(
+            name='qi.portlet.TagClouds.TagCloudPortlet',
+            assignment_class=Assignment
+        )
+
+        # what does Renderer.portlet_style give us?
+        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
+        self.assertEquals(renderer.portlet_style(), 'noheader')
+
+        # test HTML
+        renderer.update()
+        self.assertIn('<dl class="portlet portletTagCloudPortlet noheader">', renderer.render())
+
 
 def test_suite():
     """This sets up a test suite that actually runs the tests in the class

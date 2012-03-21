@@ -21,6 +21,14 @@ class TestSetup(IntegrationTestCase):
         """
         self.failUnless(self.installer.isProductInstalled('hexagonit.portletstyle'))
 
+    def test_collective_quickupload_installed(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('collective.quickupload'))
+
+    def test_qi_portlet_TagClouds_installed(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('qi.portlet.TagClouds'))
+
     def test_uninstall(self):
         """Test if hexagonit.portletstyle is cleanly uninstalled."""
         self.installer.uninstallProducts(['hexagonit.portletstyle'])
