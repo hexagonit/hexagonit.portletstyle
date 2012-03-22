@@ -4,7 +4,7 @@ Changelog
 1.3.7 (2012-03-XX)
 ------------------
 
--Dependency to qi.portlet.TagClouds added to support TagClouds portlet. [taito]
+- Dependency to qi.portlet.TagClouds added to support TagClouds portlet. [taito]
 
 1.3.6 (2012-03-13)
 ------------------

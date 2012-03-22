@@ -1,4 +1,4 @@
-hexagonit/portletclass/docs/_build/*
+hexagonit/portletstyle/docs/_build/*
 *.egg-info
 *.pyc
 *.pyo

@@ -70,6 +70,12 @@ a style when editing them):
 * `Search portlet`
 * `Static text portlet`
 
+Supported addon portlets
+------------------------
+
+* `Quickupload portlet <http://pypi.python.org/pypi/collective.quickupload>`_
+* `TagCloud portlet <http://pypi.python.org/pypi/qi.portlet.TagClouds>`_
+
 The rest of out-of-the-box Plone portlets are non-editable ones as you normally
 need only one instance per site. For these (and other) reasons the following
 portlets *do not support* choosing a style for them:

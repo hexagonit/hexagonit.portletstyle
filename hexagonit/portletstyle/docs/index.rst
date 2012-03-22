@@ -97,10 +97,16 @@ Sync a translation file with POT:
     $ find locales -name '*.po' -exec i18ndude sync --pot locales/hexagonit.portletstyle.pot {} \;
 
 
-.. include:: FUTURE.rst
-.. include:: CREDITS.rst
-.. include:: HISTORY.rst
-.. include:: LICENSE.rst
+Contents:
+
+.. toctree::
+    :maxdepth: 2
+
+    FUTURE.rst
+    HISTORY.rst
+    CREDITS.rst
+    CONTRIBUTORS.rst
+    LICENSE.rst
 
 
 Indices and tables
