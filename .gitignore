@@ -6,3 +6,4 @@ hexagonit/portletstyle/docs/_build/*
 .DS_Store
 dist
 **.mo
+setup.cfg
