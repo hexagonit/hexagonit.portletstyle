@@ -104,9 +104,19 @@ def styles_formatting(styles):
         except EmptyLineError:
             continue
         except NotAValidCssClassError:
-            raise Invalid("Style %i does not have a valid CSS class: %s" % (index + 1, style))
+            raise Invalid(
+                "Style {0} does not have a valid CSS class: {1}".format(
+                    index + 1,
+                    style
+                )
+            )
         except:
-            raise Invalid("Style %i is not correctly formatted: %s" % (index + 1, style))
+            raise Invalid(
+                "Style {0} is not correctly formatted: {1}".format(
+                    index + 1,
+                    style
+                )
+            )
     return True
 
 
