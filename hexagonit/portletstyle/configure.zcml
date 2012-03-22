@@ -153,4 +153,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <include file="upgrades.zcml"/>
+
 </configure>

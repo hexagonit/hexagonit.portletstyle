@@ -13,13 +13,13 @@ class TestSetup(IntegrationTestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer['portal']
-        self.installer = getToolByName(self.portal, 'portal_quickinstaller')
 
     def test_product_installed(self):
         """Test if hexagonit.portletstyle is installed with
         portal_quickinstaller.
         """
-        self.failUnless(self.installer.isProductInstalled('hexagonit.portletstyle'))
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        self.failUnless(installer.isProductInstalled('hexagonit.portletstyle'))
 
     def test_collective_quickupload_installed(self):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
@@ -31,8 +31,9 @@ class TestSetup(IntegrationTestCase):
 
     def test_uninstall(self):
         """Test if hexagonit.portletstyle is cleanly uninstalled."""
-        self.installer.uninstallProducts(['hexagonit.portletstyle'])
-        self.failIf(self.installer.isProductInstalled('hexagonit.portletstyle'))
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['hexagonit.portletstyle'])
+        self.failIf(installer.isProductInstalled('hexagonit.portletstyle'))
 
     # browserlayer.xml
     def test_browserlayer(self):
