@@ -1,0 +1,17 @@
+<configure
+  i18n_domain="hexagonit.portletstyle"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns="http://namespaces.zope.org/zope"
+    >
+
+  <genericsetup:upgradeStep
+    description=""
+    destination="0101"
+    handler="hexagonit.portletstyle.upgrades.upgrade_0100_to_0101"
+    profile="hexagonit.portletstyle:default"
+    sortkey="1"
+    source="0100"
+    title="Installs qi.portlet.TagClouds"
+    />
+
+</configure>
