@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.3.9  (2012-05-21)
+-------------------
+
+- Added conditions for siteurl of rss portlet [rnd]
+
 1.3.8 (2012-03-23)
 ------------------
 
