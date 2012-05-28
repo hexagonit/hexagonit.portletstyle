@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.5 (2012-05-XX)
+----------------
+
+- Added portlet form PloneGazette. [taito]
+
 1.4  (2012-05-24)
 -------------------
 
