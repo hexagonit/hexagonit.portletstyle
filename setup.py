@@ -41,6 +41,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'Products.PloneGazette',
         'collective.monkeypatcher',
         'collective.quickupload',
         'manuel',

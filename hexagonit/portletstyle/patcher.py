@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Monkey patches to support choosing a style for a portlet."""
 
+from Products.PloneGazette.portlet import subscribe
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
 from plone.app.portlets.portlets import navigation
@@ -130,3 +131,10 @@ def portlet_TagClouds_assignment__init__(self, *args, **kwargs):
     self.wfStates = kwargs.get('wfStates', [])
     self.refreshInterval = kwargs.get('refreshInterval', 3600)
     self.root = kwargs.get('root', u'')
+
+
+# portlets.SubscribeNewsletter
+def portlet_SubscribeNewsletter_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    self.name = kwargs.get('name', u"")
+    self.newsletters = kwargs.get('newsletters', None)

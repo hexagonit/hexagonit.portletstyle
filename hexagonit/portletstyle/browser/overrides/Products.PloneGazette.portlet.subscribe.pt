@@ -1,0 +1,36 @@
+<tal:block i18n:domain="plonegazette">
+  <dl
+    class="portlet portletsSubscribeNewsletter"
+    tal:attributes="class string:portlet portletsSubscribeNewsletter ${view/portlet_style}"
+    >
+    <dt class="portletHeader">
+      <span class="portletTopLeft"></span>
+      <span class="tile"
+         tal:content="view/title"
+         >
+         Title
+      </span>
+      <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem">
+      <form tal:replace="structure view/form_wrapper" />
+    </dd>
+    <dd
+      class="portletFooter"
+      tal:define="newsletters view/newsletters"
+      >
+      <span class="portletBottomLeft"></span>
+      <a 
+        tal:attributes="
+          alt newsletters/Description;
+          href newsletters/getURL;
+          title newsletters/Title
+        "
+        i18n:translate="label_visit_archives"
+        >
+        Visit our archives
+      </a>
+      <span class="portletBottomRight"></span>
+    </dd>
+  </dl>
+</tal:block>

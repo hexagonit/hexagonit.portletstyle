@@ -5,5 +5,6 @@
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-qi.portlet.TagClouds:default</dependency>
+    <dependency>profile-Products.PloneGazette:default</dependency>
   </dependencies>
 </metadata>

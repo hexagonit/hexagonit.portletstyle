@@ -127,7 +127,7 @@ def parse_style(style):
     :type style: string
 
     :rtype: tuple of strings
-    :return: A pair of strings representing css class for a style and it's title
+    :return: A pair of strings representing css class for a style and its title
 
     >>> from hexagonit.portletstyle import parse_style
 
