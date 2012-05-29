@@ -22,34 +22,46 @@
   <!-- Patch plone.app.portlets.portlets base classes to allow assigning a css
     class to portlets -->
   <monkey:patch
-      description="Patch plone.app.portlets Renderer to have portlet_style getter"
-      class="plone.app.portlets.portlets.base.Renderer"
-      original="portlet_style"
-      replacement=".patcher.get_portlet_style"
-      ignoreOriginal="true"
-      />
+    class="plone.app.portlets.portlets.base.Renderer"
+    description="Patch plone.app.portlets Renderer to have portlet_style getter"
+    ignoreOriginal="true"
+    original="portlet_style"
+    replacement=".patcher.get_portlet_style"
+    />
   <monkey:patch
-      description="Patch plone.app.portlets Assignment to have __init__"
-      class="plone.app.portlets.portlets.base.Assignment"
-      original="__init__"
-      replacement=".patcher.base_assignment__init__"
-      ignoreOriginal="true"
-      />
+    class="plone.app.portlets.portlets.base.Assignment"
+    description="Patch plone.app.portlets Assignment to have __init__"
+    ignoreOriginal="true"
+    original="__init__"
+    replacement=".patcher.base_assignment__init__"
+    />
 
   <!-- Now also patch each portlet's Assignment and AddForm classes -->
   <!-- Events portlet -->
   <monkey:patch
-      description="Patch events portlet's Assignment class"
-      class="plone.app.portlets.portlets.events.Assignment"
-      original="__init__"
-      replacement=".patcher.events_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.events.Assignment"
+    description="Patch events portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.events_assignment__init__"
+    />
   <monkey:patch
-      description="Patch events portlet's AddForm class"
-      class="plone.app.portlets.portlets.events.AddForm"
-      original="create"
-      replacement=".patcher.events_create"
-      />
+    class="plone.app.portlets.portlets.events.AddForm"
+    description="Patch events portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.events_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.events.AddForm"
+    description="Patch events portlet's AddForm class"
+    original="create"
+    replacement=".patcher.events_create"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.events.EditForm"
+    description="Patch events portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.events_editform__init__"
+    />
   <!-- Navigation portlet -->
   <monkey:patch
       description="Patch navigation portlet's Assignment class"
@@ -136,12 +148,23 @@
       />
   <!-- Collection portlet -->
   <monkey:patch
-      description="Patch collection portlet's Assignment class"
-      class="plone.portlet.collection.collection.Assignment"
-      original="__init__"
-      replacement=".patcher.collection_assignment__init__"
-      />
-
+    class="plone.portlet.collection.collection.Assignment"
+    description="Patch collection portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.collection_assignment__init__"
+    />
+  <monkey:patch
+    class="plone.portlet.collection.collection.AddForm"
+    description="Patch collection portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.collection_addform__init__"
+    />
+  <monkey:patch
+    class="plone.portlet.collection.collection.EditForm"
+    description="Patch collection portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.collection_editform__init__"
+    />
   <!-- collective.quickupload portlet -->
   <monkey:patch
       description="Patch quickupload portlet's Assignment class"

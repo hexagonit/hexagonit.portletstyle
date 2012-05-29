@@ -55,8 +55,6 @@ from plone.app.testing import TEST_USER_ID
 
 #     layer = FUNCTIONAL_TESTING
 
-
-
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
@@ -72,6 +70,10 @@ class HexagonitPortletstyleLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
+
+        # Required by Products.CMFPlone:plone-content to setup defaul plone site.
+        z2.installProduct(app, 'Products.PythonScripts')
+
         # Load ZCML
         import hexagonit.portletstyle
         self.loadZCML(package=hexagonit.portletstyle)
@@ -80,6 +82,13 @@ class HexagonitPortletstyleLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
+
+        # Installs all the Plone stuff. Workflows etc. to setup defaul plone site.
+        self.applyProfile(portal, 'Products.CMFPlone:plone')
+
+        # Install portal content. Including the Members folder! to setup defaul plone site.
+        self.applyProfile(portal, 'Products.CMFPlone:plone-content')
+
         self.applyProfile(portal, 'hexagonit.portletstyle:default')
 
         setRoles(portal, TEST_USER_ID, ('Manager',))

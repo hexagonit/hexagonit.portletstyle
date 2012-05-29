@@ -1,33 +1,27 @@
-User story
-==========
+Log in as the portal owner::
 
-A scripted walk-through of basic features of hexagonit.portletstyle.
+    >>> from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
+    >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
-Prepare
--------
+Calendar and Classic portlets are not styled.
 
-Start by logging-in so we can manage portlets.
+Add Collection portlet::
 
-    Go to login screen.
-    >>> browser.open(portal.absolute_url() + '/login')
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/plone.portlet.collection.Collection')
 
-    Fill in your credentials.
-    >>> browser.getControl(name='__ac_name').value = TEST_USER_NAME
-    >>> browser.getControl(name='__ac_password').value = TEST_USER_PASSWORD
-
-    Click Login button.
-    >>> browser.getControl(name='submit').click()
-
-    Are we logged in?
-    >>> "You are now logged in" in browser.contents
+    >>> 'id="form.portlet_style"' in browser.contents
     True
 
+Add Events portlet::
 
-Add a portlet without selecting a style
----------------------------------------
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.Events')
 
-    Go to portlet management screen.
-    >>> browser.open(portal.absolute_url() + '/@@manage-portlets')
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+Add a portlet without selecting a style::
+
+    >>> browser.open('/@@manage-portlets')
 
     Select Recent Items portlet from the ``Add portlet ...`` drop-down menu.
     >>> menu = browser.getControl('Add portlet', index=0).control
@@ -46,6 +40,7 @@ Add a portlet without selecting a style
 
     Test that our portlet is there and that it does not have any additional
     styles assigned.
+
     >>> '<dl class="portlet portletRecent  ">' in browser.contents
     True
 

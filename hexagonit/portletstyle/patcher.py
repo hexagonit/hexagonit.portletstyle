@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Monkey patches to support choosing a style for a portlet."""
-
 from Products.PloneGazette.portlet import subscribe
+from hexagonit.portletstyle import _
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
 from plone.app.portlets.portlets import navigation
@@ -9,18 +9,11 @@ from plone.app.portlets.portlets import news
 from plone.app.portlets.portlets import recent
 from plone.app.portlets.portlets import rss
 from plone.app.portlets.portlets import search
-
-
-from zope.component import queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-
-from hexagonit.portletstyle import _
-from zope.interface import Interface
-from zope.interface import implements
-from zope.schema import Choice
-from plone.app.portlets.portlets.recent import IRecentPortlet
+from plone.portlet.collection import collection
 from zope.formlib import form
+from zope.interface import Interface
 from zope.interface import directlyProvides
+from zope.schema import Choice
 
 
 # Patch IPortletDataProvider so it has an additional field
@@ -32,7 +25,6 @@ class IPortletDataProvider(Interface):
         required=True,
         default=" ",  # This makes the 'Default style' selected by default
     )
-# interfaces.IPortletDataProvider = IPortletDataProvider
 
 
 def get_portlet_style(self):
@@ -40,20 +32,33 @@ def get_portlet_style(self):
 
 
 def base_assignment__init__(self, *args, **kwargs):
-    # if queryUtility(IVocabularyFactory, name=u'hexagonit.portletstyle.StylesVocabulary'):
-    #     import pdb; pdb.set_trace()
-        self.portlet_style = kwargs.get('portlet_style', u' ')
+    self.portlet_style = kwargs.get('portlet_style', u' ')
 
 
 # portlet.Events
+class INewEventsPortlet(events.IEventsPortlet, IPortletDataProvider):
+    """DataProvider Interface for Events portlet."""
+
+
 def events_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewEventsPortlet)
     self.count = kwargs.get('count', 5)
     self.state = kwargs.get('state', ('published', ))
 
 
+def events_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewEventsPortlet)
+    super(events.AddForm, self).__init__(context, request)
+
+
 def events_create(self, data):
     return events.Assignment(**data)
+
+
+def events_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewEventsPortlet)
+    super(events.EditForm, self).__init__(context, request)
 
 
 # portlet.Navigation
@@ -141,14 +146,33 @@ def static_assignment__init__(self, *args, **kwargs):
 
 
 # portlet.Collection
+class INewCollectionPortlet(collection.ICollectionPortlet, IPortletDataProvider):
+    """DataProvider Interface for Collection portlet."""
+
+
 def collection_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewCollectionPortlet)
     self.header = kwargs.get('header', u"")
     self.target_collection = kwargs.get('target_collection', None)
     self.limit = kwargs.get('limit', None)
     self.random = kwargs.get('random', None)
     self.show_more = kwargs.get('show_more', True)
     self.show_dates = kwargs.get('show_dates', False)
+
+
+def collection_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewCollectionPortlet)
+    super(collection.AddForm, self).__init__(context, request)
+
+
+# def collection_create(self, data):
+#     return collection.Assignment(**data)
+
+
+def collection_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewCollectionPortlet)
+    super(collection.EditForm, self).__init__(context, request)
 
 
 # portlet.quickupload
@@ -179,50 +203,3 @@ def portlet_SubscribeNewsletter_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
     self.name = kwargs.get('name', u"")
     self.newsletters = kwargs.get('newsletters', None)
-
-
-
-
-
-
-
-class IRecentPortlet(IPortletDataProvider, IRecentPortlet):
-    """For overriding recent portlet Assignment class implements."""
-
-class RecentAssignment(base.Assignment):
-
-    implements(IRecentPortlet)
-
-    def __init__(self, *args, **kwargs):
-        base.Assignment.__init__(self, *args, **kwargs)
-        self.count = kwargs.get('count', 5)
-
-    @property
-    def title(self):
-        return _(u"Recent items")
-
-
-# portlet_style = Choice(
-#     title=_(u"Portlet style"),
-#     description=_(u"Select this portlet's style"),
-#     vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
-#     required=True,
-#     default=" ",  # This makes the 'Default style' selected by default
-# )
-
-
-
-class RecentAddForm(base.AddForm):
-    form_fields = form.Fields(IRecentPortlet)
-    label = _(u"Add Recent Portlet")
-    description = _(u"This portlet displays recently modified content.")
-
-    def create(self, data):
-        import pdb; pdb.set_trace()
-        return Assignment(**data)
-
-
-class RecentEditForm(base.EditForm):
-    form_fields = form.Fields(IRecentPortlet)
-    label = _(u"Edit Recent Portlet")
-    description = _(u"This portlet displays recently modified content.")
