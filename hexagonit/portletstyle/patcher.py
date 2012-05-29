@@ -170,13 +170,28 @@ def rss_editform__init__(self, context, request):
 
 
 # portlet.Search
+class INewSearchPortlet(search.ISearchPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Search portlet."""
+
+
 def search_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewSearchPortlet)
     self.enableLivesearch = kwargs.get('enableLivesearch', u'')
+
+
+def search_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewSearchPortlet)
+    super(search.AddForm, self).__init__(context, request)
 
 
 def search_create(self, data):
     return search.Assignment(**data)
+
+
+def search_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewSearchPortlet)
+    super(search.EditForm, self).__init__(context, request)
 
 
 # portlet.Static

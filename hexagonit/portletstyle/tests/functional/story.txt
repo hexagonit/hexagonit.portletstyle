@@ -3,7 +3,7 @@ Log in as the portal owner::
     >>> from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
     >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
-Calendar, Classic, Login portlets are not styled.
+Calendar, Classic, Login, Review portlets are not styled.
 
 Add Collection portlet::
 
@@ -83,6 +83,13 @@ Select a style for the Recent portlet::
 Add RSS portlet::
 
     >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.rss')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+Add Search portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.Search')
 
     >>> 'id="form.portlet_style"' in browser.contents
     True

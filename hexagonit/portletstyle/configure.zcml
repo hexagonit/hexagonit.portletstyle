@@ -146,7 +146,7 @@
     />
   <monkey:patch
     class="plone.app.portlets.portlets.rss.AddForm"
-    description="Patch rss-item portlet's AddForm class"
+    description="Patch rss portlet's AddForm class"
     original="__init__"
     replacement=".patcher.rss_addform__init__"
     />
@@ -158,23 +158,35 @@
     />
   <monkey:patch
     class="plone.app.portlets.portlets.rss.EditForm"
-    description="Patch rss-item portlet's EditForm class"
+    description="Patch rss portlet's EditForm class"
     original="__init__"
     replacement=".patcher.rss_editform__init__"
     />
   <!-- Search portlet -->
   <monkey:patch
-      description="Patch Search portlet's Assignment class"
-      class="plone.app.portlets.portlets.search.Assignment"
-      original="__init__"
-      replacement=".patcher.search_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.search.Assignment"
+    description="Patch Search portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.search_assignment__init__"
+    />
   <monkey:patch
-      description="Patch Search portlet's AddForm class"
-      class="plone.app.portlets.portlets.search.AddForm"
-      original="create"
-      replacement=".patcher.search_create"
-      />
+    class="plone.app.portlets.portlets.search.AddForm"
+    description="Patch search portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.search_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.search.AddForm"
+    description="Patch Search portlet's AddForm class"
+    original="create"
+    replacement=".patcher.search_create"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.search.EditForm"
+    description="Patch search portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.search_editform__init__"
+    />
   <!-- Static text portlet -->
   <monkey:patch
       description="Patch static-text portlet's Assignment class"
