@@ -227,12 +227,23 @@
     />
   <!-- collective.quickupload portlet -->
   <monkey:patch
-      description="Patch quickupload portlet's Assignment class"
-      class="collective.quickupload.portlet.quickuploadportlet.Assignment"
-      original="__init__"
-      replacement=".patcher.portlet_quickupload_assignment__init__"
-      />
-
+    class="collective.quickupload.portlet.quickuploadportlet.Assignment"
+    description="Patch quickupload portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.portlet_quickupload_assignment__init__"
+    />
+  <monkey:patch
+    class="collective.quickupload.portlet.quickuploadportlet.AddForm"
+    description="Patch quickuploadportlet portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.quickuploadportlet_addform__init__"
+    />
+  <monkey:patch
+    class="collective.quickupload.portlet.quickuploadportlet.EditForm"
+    description="Patch quickuploadportlet portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.quickuploadportlet_editform__init__"
+    />
   <!-- qi.portlet.TagClouds -->
   <monkey:patch
       description="Patch TagClouds portlet's Assignment class"

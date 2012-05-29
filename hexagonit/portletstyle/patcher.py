@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Monkey patches to support choosing a style for a portlet."""
 from Products.PloneGazette.portlet import subscribe
+from collective.quickupload.portlet import quickuploadportlet
 from hexagonit.portletstyle import _
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
@@ -246,11 +247,26 @@ def collection_editform__init__(self, context, request):
 
 
 # portlet.quickupload
+class INewQuickUploadPortlet(quickuploadportlet.IQuickUploadPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for QuickUpload portlet."""
+
+
 def portlet_quickupload_assignment__init__(self, portlet_style="", header="", upload_portal_type="auto", upload_media_type=""):
+    directlyProvides(self, INewQuickUploadPortlet)
     self.portlet_style = portlet_style
     self.header = header
     self.upload_portal_type = upload_portal_type
     self.upload_media_type = upload_media_type
+
+
+def quickuploadportlet_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewQuickUploadPortlet)
+    super(quickuploadportlet.AddForm, self).__init__(context, request)
+
+
+def quickuploadportlet_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewQuickUploadPortlet)
+    super(quickuploadportlet.EditForm, self).__init__(context, request)
 
 
 # qi.portlet.TagClouds

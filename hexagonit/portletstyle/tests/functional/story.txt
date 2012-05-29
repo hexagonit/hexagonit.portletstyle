@@ -100,3 +100,13 @@ Add Static portlet::
 
     >>> 'id="form.portlet_style"' in browser.contents
     True
+
+Add Quick Upload portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/collective.quickupload.QuickUploadPortlet')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+
+
