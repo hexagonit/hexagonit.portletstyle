@@ -108,5 +108,16 @@ Add Quick Upload portlet::
     >>> 'id="form.portlet_style"' in browser.contents
     True
 
+Add Tag Cloud portlet::
 
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/qi.portlet.TagClouds.TagCloudPortlet')
 
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+Add Subscribe Newsletter portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.SubscribeNewsletter')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True

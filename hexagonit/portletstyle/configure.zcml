@@ -246,27 +246,50 @@
     />
   <!-- qi.portlet.TagClouds -->
   <monkey:patch
-      description="Patch TagClouds portlet's Assignment class"
-      class="qi.portlet.TagClouds.tagcloudportlet.Assignment"
-      original="__init__"
-      replacement=".patcher.portlet_TagClouds_assignment__init__"
-      />
-
+    class="qi.portlet.TagClouds.tagcloudportlet.Assignment"
+    description="Patch TagClouds portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.portlet_TagClouds_assignment__init__"
+    />
+  <monkey:patch
+    class="qi.portlet.TagClouds.tagcloudportlet.AddForm"
+    description="Patch tagcloudportlet portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.tagcloudportlet_addform__init__"
+    />
+  <monkey:patch
+    class="qi.portlet.TagClouds.tagcloudportlet.EditForm"
+    description="Patch tagcloudportlet portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.tagcloudportlet_editform__init__"
+    />
   <!-- portlets.SubscribeNewsletter -->
   <monkey:patch
-      description="Patch SubscribeNewsletter portlet's Assignment class"
-      class="Products.PloneGazette.portlet.subscribe.Assignment"
-      original="__init__"
-      replacement=".patcher.portlet_SubscribeNewsletter_assignment__init__"
-      />
+    class="Products.PloneGazette.portlet.subscribe.Assignment"
+    description="Patch SubscribeNewsletter portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.portlet_SubscribeNewsletter_assignment__init__"
+    />
+  <monkey:patch
+    class="Products.PloneGazette.portlet.subscribe.AddForm"
+    description="Patch subscribe portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.subscribe_addform__init__"
+    />
+  <monkey:patch
+    class="Products.PloneGazette.portlet.subscribe.EditForm"
+    description="Patch subscribe portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.subscribe_editform__init__"
+    />
 
   <genericsetup:registerProfile
-      name="default"
-      title="hexagonit.portletstyle"
-      directory="profiles/default"
-      description="Installs the hexagonit.portletstyle package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+    description="Installs the hexagonit.portletstyle package"
+    directory="profiles/default"
+    name="default"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    title="hexagonit.portletstyle"
+    />
 
   <include file="upgrades.zcml"/>
 

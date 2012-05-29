@@ -3,6 +3,7 @@
 from Products.PloneGazette.portlet import subscribe
 from collective.quickupload.portlet import quickuploadportlet
 from hexagonit.portletstyle import _
+from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
 from plone.app.portlets.portlets import navigation
@@ -12,6 +13,7 @@ from plone.app.portlets.portlets import rss
 from plone.app.portlets.portlets import search
 from plone.portlet.collection import collection
 from plone.portlet.static import static
+from qi.portlet.TagClouds import tagcloudportlet
 from zope.formlib import form
 from zope.interface import Interface
 from zope.interface import directlyProvides
@@ -248,7 +250,7 @@ def collection_editform__init__(self, context, request):
 
 # portlet.quickupload
 class INewQuickUploadPortlet(quickuploadportlet.IQuickUploadPortlet, IPortletStyleDataProvider):
-    """DataProvider Interface for QuickUpload portlet."""
+    """DataProvider Interface for Quick Upload portlet."""
 
 
 def portlet_quickupload_assignment__init__(self, portlet_style="", header="", upload_portal_type="auto", upload_media_type=""):
@@ -270,8 +272,13 @@ def quickuploadportlet_editform__init__(self, context, request):
 
 
 # qi.portlet.TagClouds
+class INewTagCloudPortlet(tagcloudportlet.ITagCloudPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Tag Cloud portlet."""
+
+
 def portlet_TagClouds_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewTagCloudPortlet)
     self.header = kwargs.get('header', u"")
     self.portletTitle = kwargs.get('portletTitle', 'TagCloud')
     self.levels = kwargs.get('levels', 5)
@@ -284,8 +291,35 @@ def portlet_TagClouds_assignment__init__(self, *args, **kwargs):
     self.root = kwargs.get('root', u'')
 
 
+def tagcloudportlet_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewTagCloudPortlet)
+    self.form_fields['root'].custom_widget = UberSelectionWidget
+    super(tagcloudportlet.AddForm, self).__init__(context, request)
+
+
+def tagcloudportlet_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewTagCloudPortlet)
+    self.form_fields['root'].custom_widget = UberSelectionWidget
+    super(tagcloudportlet.EditForm, self).__init__(context, request)
+
+
 # portlets.SubscribeNewsletter
+class INewSubscribeNewsletterPortlet(subscribe.ISubscribeNewsletterPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Subscribe Newsletter portlet."""
+
+
 def portlet_SubscribeNewsletter_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, )
     self.name = kwargs.get('name', u"")
     self.newsletters = kwargs.get('newsletters', None)
+
+
+def subscribe_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewSubscribeNewsletterPortlet)
+    super(subscribe.AddForm, self).__init__(context, request)
+
+
+def subscribe_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewSubscribeNewsletterPortlet)
+    super(subscribe.EditForm, self).__init__(context, request)
