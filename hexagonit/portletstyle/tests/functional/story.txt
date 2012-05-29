@@ -93,3 +93,10 @@ Add Search portlet::
 
     >>> 'id="form.portlet_style"' in browser.contents
     True
+
+Add Static portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/plone.portlet.static.Static')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True

@@ -10,6 +10,7 @@ from plone.app.portlets.portlets import recent
 from plone.app.portlets.portlets import rss
 from plone.app.portlets.portlets import search
 from plone.portlet.collection import collection
+from plone.portlet.static import static
 from zope.formlib import form
 from zope.interface import Interface
 from zope.interface import directlyProvides
@@ -195,6 +196,10 @@ def search_editform__init__(self, context, request):
 
 
 # portlet.Static
+class INewStaticPortlet(static.IStaticPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Static portlet."""
+
+
 def static_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
     self.header = kwargs.get('header', u"")
@@ -202,6 +207,16 @@ def static_assignment__init__(self, *args, **kwargs):
     self.omit_border = kwargs.get('omit_border', False)
     self.footer = kwargs.get('footer', u"")
     self.more_url = kwargs.get('more_url', u"")
+
+
+def static_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewStaticPortlet)
+    super(static.AddForm, self).__init__(context, request)
+
+
+def static_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewStaticPortlet)
+    super(static.EditForm, self).__init__(context, request)
 
 
 # portlet.Collection
@@ -223,10 +238,6 @@ def collection_assignment__init__(self, *args, **kwargs):
 def collection_addform__init__(self, context, request):
     self.form_fields = form.Fields(INewCollectionPortlet)
     super(collection.AddForm, self).__init__(context, request)
-
-
-# def collection_create(self, data):
-#     return collection.Assignment(**data)
 
 
 def collection_editform__init__(self, context, request):

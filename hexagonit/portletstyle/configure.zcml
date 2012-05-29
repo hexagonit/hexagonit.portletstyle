@@ -189,11 +189,23 @@
     />
   <!-- Static text portlet -->
   <monkey:patch
-      description="Patch static-text portlet's Assignment class"
-      class="plone.portlet.static.static.Assignment"
-      original="__init__"
-      replacement=".patcher.static_assignment__init__"
-      />
+    class="plone.portlet.static.static.Assignment"
+    description="Patch static-text portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.static_assignment__init__"
+    />
+  <monkey:patch
+    class="plone.portlet.static.static.AddForm"
+    description="Patch static portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.static_addform__init__"
+    />
+  <monkey:patch
+    class="plone.portlet.static.static.EditForm"
+    description="Patch static portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.static_editform__init__"
+    />
   <!-- Collection portlet -->
   <monkey:patch
     class="plone.portlet.collection.collection.Assignment"
