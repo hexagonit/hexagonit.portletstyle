@@ -45,6 +45,7 @@ setup(
         'collective.monkeypatcher',
         'collective.quickupload',
         'hexagonit.testing',
+        'plone.app.portlet',
         'plone.app.registry',
         'plone.app.z3cform',
         'plone.browserlayer',
