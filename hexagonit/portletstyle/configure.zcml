@@ -1,10 +1,11 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    xmlns:monkey="http://namespaces.plone.org/monkey"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="hexagonit.portletstyle">
+  i18n_domain="hexagonit.portletstyle"
+  xmlns:five="http://namespaces.zope.org/five"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns:monkey="http://namespaces.plone.org/monkey"
+  xmlns="http://namespaces.zope.org/zope"
+  >
 
   <five:registerPackage package="." initialize=".initialize" />
   <includeDependencies package="." />
@@ -85,8 +86,20 @@
   <monkey:patch
       description="Patch recent-item portlet's AddForm class"
       class="plone.app.portlets.portlets.recent.AddForm"
+      original="__init__"
+      replacement=".patcher.recent_addform__init__"
+      />
+  <monkey:patch
+      description="Patch recent-item portlet's AddForm class"
+      class="plone.app.portlets.portlets.recent.AddForm"
       original="create"
       replacement=".patcher.recent_create"
+      />
+  <monkey:patch
+      description="Patch recent-item portlet's EditForm class"
+      class="plone.app.portlets.portlets.recent.EditForm"
+      original="__init__"
+      replacement=".patcher.recent_editform__init__"
       />
   <!-- RSS portlet -->
   <monkey:patch

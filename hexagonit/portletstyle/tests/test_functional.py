@@ -8,7 +8,8 @@ from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
 from plone.testing import layered
 from zope.testing import renormalizing
-from plone.testing.z2 import Browser
+# from plone.testing.z2 import Browser
+from hexagonit.testing.browser import Browser
 
 import doctest
 import manuel.codeblock

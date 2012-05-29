@@ -44,6 +44,7 @@ setup(
         'Products.PloneGazette',
         'collective.monkeypatcher',
         'collective.quickupload',
+        'hexagonit.testing',
         'manuel',
         'mock',
         'plone.app.registry',

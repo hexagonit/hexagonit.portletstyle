@@ -20,20 +20,20 @@ _ = PortletStyleMessageFactory = MessageFactory('hexagonit.portletstyle')
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
 
-# This is needed so that old portlets can be edited
-Assignment.portlet_style = u' '
+# # This is needed so that old portlets can be edited
+# Assignment.portlet_style = u' '
 
 
-# Patch IPortletDataProvider so it has an additional field
-class IPortletDataProvider(Interface):
-    portlet_style = Choice(
-        title=_(u"Portlet style"),
-        description=_(u"Select this portlet's style"),
-        vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
-        required=True,
-        default=" ",  # This makes the 'Default style' selected by default
-    )
-interfaces.IPortletDataProvider = IPortletDataProvider
+# # Patch IPortletDataProvider so it has an additional field
+# class IPortletDataProvider(Interface):
+#     portlet_style = Choice(
+#         title=_(u"Portlet style"),
+#         description=_(u"Select this portlet's style"),
+#         vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
+#         required=True,
+#         default=" ",  # This makes the 'Default style' selected by default
+#     )
+# interfaces.IPortletDataProvider = IPortletDataProvider
 
 
 # Patch render_cachekey so it also takes into account the selected style
