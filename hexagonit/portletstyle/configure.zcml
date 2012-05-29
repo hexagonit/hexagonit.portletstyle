@@ -282,6 +282,13 @@
     original="__init__"
     replacement=".patcher.subscribe_editform__init__"
     />
+    <!--  -->
+  <monkey:patch
+    module="zope.formlib.form"
+    description="Patch setUpEditWidgets to avoid Error."
+    original="setUpEditWidgets"
+    replacement=".patcher.setUpEditWidgets"
+    />
 
   <genericsetup:registerProfile
     description="Installs the hexagonit.portletstyle package"

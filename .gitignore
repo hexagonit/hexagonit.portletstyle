@@ -1,9 +1,9 @@
-hexagonit/portletstyle/docs/_build/*
+**.mo
 *.egg-info
 *.pyc
 *.pyo
 *~
 .DS_Store
 dist
-**.mo
+hexagonit/portletstyle/docs/_build/*
 setup.cfg

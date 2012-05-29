@@ -15,6 +15,13 @@ from plone.portlet.collection import collection
 from plone.portlet.static import static
 from qi.portlet.TagClouds import tagcloudportlet
 from zope.formlib import form
+from zope.formlib.form import Widgets
+from zope.formlib.form import _createWidget
+from zope.formlib.form import canWrite
+from zope.formlib.form import expandPrefix
+from zope.formlib.interfaces import DISPLAY_UNWRITEABLE
+from zope.formlib.interfaces import IDisplayWidget
+from zope.formlib.interfaces import IInputWidget
 from zope.interface import Interface
 from zope.interface import directlyProvides
 from zope.schema import Choice
@@ -323,3 +330,56 @@ def subscribe_addform__init__(self, context, request):
 def subscribe_editform__init__(self, context, request):
     self.form_fields = form.Fields(INewSubscribeNewsletterPortlet)
     super(subscribe.EditForm, self).__init__(context, request)
+
+
+def setUpEditWidgets(form_fields, form_prefix, context, request,
+                     adapters=None, for_display=False,
+                     ignore_request=False):
+    if adapters is None:
+        adapters = {}
+
+    widgets = []
+    for form_field in form_fields:
+        field = form_field.field
+        # Adapt context, if necessary
+        interface = form_field.interface
+        adapter = adapters.get(interface)
+        if adapter is None:
+            if interface is None:
+                adapter = context
+            else:
+                adapter = interface(context, context)  # Work around.
+            adapters[interface] = adapter
+            if interface is not None:
+                adapters[interface.__name__] = adapter
+
+        field = field.bind(adapter)
+
+        readonly = form_field.for_display
+        readonly = readonly or (field.readonly and not form_field.for_input)
+        readonly = readonly or (
+            (form_field.render_context & DISPLAY_UNWRITEABLE)
+            and not canWrite(adapter, field)
+            )
+        readonly = readonly or for_display
+
+        if readonly:
+            iface = IDisplayWidget
+        else:
+            iface = IInputWidget
+        widget = _createWidget(form_field, field, request, iface)
+
+        prefix = form_prefix
+        if form_field.prefix:
+            prefix = expandPrefix(prefix) + form_field.prefix
+
+        widget.setPrefix(prefix)
+
+        if ignore_request or readonly or not widget.hasInput():
+            # Get the value to render
+            value = field.get(adapter)
+            widget.setRenderedValue(value)
+
+        widgets.append((not readonly, widget))
+
+    return Widgets(widgets, prefix=form_prefix)

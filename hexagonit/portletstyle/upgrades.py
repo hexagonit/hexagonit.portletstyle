@@ -5,8 +5,8 @@ import logging
 PROFILE_ID = 'profile-hexagonit.portletstyle:default'
 
 
-def upgrade_0100_to_0101(context, logger=None):
-    """Installs qi.portlet.TagClouds"""
+def reimport_package(context, logger=None):
+    """Reimport hexagonit.portletstyle."""
     if logger is None:
         # Called as upgrade step: define our own logger.
         logger = logging.getLogger(__name__)

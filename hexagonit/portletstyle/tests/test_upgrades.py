@@ -12,12 +12,12 @@ class TestSetup(IntegrationTestCase):
         """Custom shared utility setup for tests."""
         self.portal = self.layer['portal']
 
-    def test_upgrade_0100_to_0101(self):
+    def test_reimport_package(self):
         """Uninstall qi.portlet.TagClouds and see if upgrade step reinstall it.
         """
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         installer.uninstallProducts(['qi.portlet.TagClouds'])
         self.failIf(installer.isProductInstalled('qi.portlet.TagClouds'))
-        from hexagonit.portletstyle.upgrades import upgrade_0100_to_0101
-        upgrade_0100_to_0101(self.portal)
+        from hexagonit.portletstyle.upgrades import reimport_package
+        reimport_package(self.portal)
         self.failUnless(installer.isProductInstalled('qi.portlet.TagClouds'))

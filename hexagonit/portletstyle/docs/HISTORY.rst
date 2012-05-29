@@ -5,6 +5,8 @@ Changelog
 ----------------
 
 - Added portlet form PloneGazette. [taito]
+- Removed patching IPortletDataProvider to avoid test failures for portlets.
+  [taito]
 
 1.4  (2012-05-24)
 -------------------
