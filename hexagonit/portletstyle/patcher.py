@@ -16,8 +16,7 @@ from zope.interface import directlyProvides
 from zope.schema import Choice
 
 
-# Patch IPortletDataProvider so it has an additional field
-class IPortletDataProvider(Interface):
+class IPortletStyleDataProvider(Interface):
     portlet_style = Choice(
         title=_(u"Portlet style"),
         description=_(u"Select this portlet's style"),
@@ -36,7 +35,7 @@ def base_assignment__init__(self, *args, **kwargs):
 
 
 # portlet.Events
-class INewEventsPortlet(events.IEventsPortlet, IPortletDataProvider):
+class INewEventsPortlet(events.IEventsPortlet, IPortletStyleDataProvider):
     """DataProvider Interface for Events portlet."""
 
 
@@ -62,8 +61,13 @@ def events_editform__init__(self, context, request):
 
 
 # portlet.Navigation
+class INewNavigationPortlet(navigation.INavigationPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Navigation portlet."""
+
+
 def navigation_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, )
     self.name = kwargs.get('name', u"")
     self.root = kwargs.get('root', None)
     self.currentFolderOnly = kwargs.get('currentFolderOnly', False)
@@ -72,23 +76,48 @@ def navigation_assignment__init__(self, *args, **kwargs):
     self.bottomLevel = kwargs.get('bottomLevel', 0)
 
 
+def navigation_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewNavigationPortlet)
+    super(navigation.AddForm, self).__init__(context, request)
+
+
 def navigation_create(self, data):
     return navigation.Assignment(**data)
 
 
+def navigation_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewNavigationPortlet)
+    super(navigation.EditForm, self).__init__(context, request)
+
+
 # portlet.News
+class INewNewsPortlet(news.INewsPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for News portlet."""
+
+
 def news_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewNewsPortlet)
     self.count = kwargs.get('count', 5)
     self.state = kwargs.get('state', ('published', ))
+
+
+def news_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewNewsPortlet)
+    super(news.AddForm, self).__init__(context, request)
 
 
 def news_create(self, data):
     return news.Assignment(**data)
 
 
+def news_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewNewsPortlet)
+    super(news.EditForm, self).__init__(context, request)
+
+
 # portlet.Recent
-class INewRecentPortlet(recent.IRecentPortlet, IPortletDataProvider):
+class INewRecentPortlet(recent.IRecentPortlet, IPortletStyleDataProvider):
     """DataProvider Interface for Recent portlet."""
 
 
@@ -113,16 +142,31 @@ def recent_editform__init__(self, context, request):
 
 
 # portlet.Rss
+class INewRSSPortlet(rss.IRSSPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for RSS portlet."""
+
+
 def rss_assignment__init__(self, *args, **kwargs):
     base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewRSSPortlet)
     self.portlet_title = kwargs.get('portlet_title', u'')
     self.count = kwargs.get('count', 5)
     self.url = kwargs.get('url', u'')
     self.timeout = kwargs.get('timeout', 100)
 
 
+def rss_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewRSSPortlet)
+    super(rss.AddForm, self).__init__(context, request)
+
+
 def rss_create(self, data):
     return rss.Assignment(**data)
+
+
+def rss_editform__init__(self, context, request):
+    self.form_fields = form.Fields(INewRSSPortlet)
+    super(rss.EditForm, self).__init__(context, request)
 
 
 # portlet.Search
@@ -146,7 +190,7 @@ def static_assignment__init__(self, *args, **kwargs):
 
 
 # portlet.Collection
-class INewCollectionPortlet(collection.ICollectionPortlet, IPortletDataProvider):
+class INewCollectionPortlet(collection.ICollectionPortlet, IPortletStyleDataProvider):
     """DataProvider Interface for Collection portlet."""
 
 

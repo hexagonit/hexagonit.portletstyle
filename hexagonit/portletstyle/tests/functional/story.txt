@@ -3,7 +3,7 @@ Log in as the portal owner::
     >>> from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
     >>> browser.login(TEST_USER_NAME, TEST_USER_PASSWORD)
 
-Calendar and Classic portlets are not styled.
+Calendar, Classic, Login portlets are not styled.
 
 Add Collection portlet::
 
@@ -19,7 +19,21 @@ Add Events portlet::
     >>> 'id="form.portlet_style"' in browser.contents
     True
 
-Add a portlet without selecting a style::
+Add Navigation portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.Navigation')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+Add News portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.News')
+
+    >>> 'id="form.portlet_style"' in browser.contents
+    True
+
+Add Recent portlet without selecting a style::
 
     >>> browser.open('/@@manage-portlets')
 
@@ -45,10 +59,8 @@ Add a portlet without selecting a style::
     True
 
 
-Select a style for a portlet
-----------------------------
+Select a style for the Recent portlet::
 
-    Go back portlet management screen.
     >>> browser.open(portal.absolute_url() + '/@@manage-portlets')
 
     Click on Recent Items portlet
@@ -66,4 +78,11 @@ Select a style for a portlet
 
     Test that our portlet has an additional style assigned.
     >>> '<dl class="portlet portletRecent noheader">' in browser.contents
+    True
+
+Add RSS portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.rss')
+
+    >>> 'id="form.portlet_style"' in browser.contents
     True

@@ -64,68 +64,104 @@
     />
   <!-- Navigation portlet -->
   <monkey:patch
-      description="Patch navigation portlet's Assignment class"
-      class="plone.app.portlets.portlets.navigation.Assignment"
-      original="__init__"
-      replacement=".patcher.navigation_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.navigation.Assignment"
+    description="Patch navigation portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.navigation_assignment__init__"
+    />
   <monkey:patch
-      description="Patch navigation portlet's AddForm class"
-      class="plone.app.portlets.portlets.navigation.AddForm"
-      original="create"
-      replacement=".patcher.navigation_create"
-      />
+    class="plone.app.portlets.portlets.navigation.AddForm"
+    description="Patch navigation portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.navigation_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.navigation.AddForm"
+    description="Patch navigation portlet's AddForm class"
+    original="create"
+    replacement=".patcher.navigation_create"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.navigation.EditForm"
+    description="Patch navigation portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.navigation_editform__init__"
+    />
   <!-- News portlet -->
   <monkey:patch
-      description="Patch news portlet's Assignment class"
-      class="plone.app.portlets.portlets.news.Assignment"
-      original="__init__"
-      replacement=".patcher.news_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.news.Assignment"
+    description="Patch news portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.news_assignment__init__"
+    />
   <monkey:patch
-      description="Patch news portlet's AddForm class"
-      class="plone.app.portlets.portlets.news.AddForm"
-      original="create"
-      replacement=".patcher.news_create"
-      />
+    class="plone.app.portlets.portlets.news.AddForm"
+    description="Patch news portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.news_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.news.AddForm"
+    description="Patch news portlet's AddForm class"
+    original="create"
+    replacement=".patcher.news_create"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.news.EditForm"
+    description="Patch news portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.news_editform__init__"
+    />
   <!-- Recent Items portlet -->
   <monkey:patch
-      description="Patch recent-item portlet's Assignment class"
-      class="plone.app.portlets.portlets.recent.Assignment"
-      original="__init__"
-      replacement=".patcher.recent_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.recent.Assignment"
+    description="Patch recent-item portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.recent_assignment__init__"
+    />
   <monkey:patch
-      description="Patch recent-item portlet's AddForm class"
-      class="plone.app.portlets.portlets.recent.AddForm"
-      original="__init__"
-      replacement=".patcher.recent_addform__init__"
-      />
+    class="plone.app.portlets.portlets.recent.AddForm"
+    description="Patch recent-item portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.recent_addform__init__"
+    />
   <monkey:patch
-      description="Patch recent-item portlet's AddForm class"
-      class="plone.app.portlets.portlets.recent.AddForm"
-      original="create"
-      replacement=".patcher.recent_create"
-      />
+    class="plone.app.portlets.portlets.recent.AddForm"
+    description="Patch recent-item portlet's AddForm class"
+    original="create"
+    replacement=".patcher.recent_create"
+    />
   <monkey:patch
-      description="Patch recent-item portlet's EditForm class"
-      class="plone.app.portlets.portlets.recent.EditForm"
-      original="__init__"
-      replacement=".patcher.recent_editform__init__"
-      />
+    class="plone.app.portlets.portlets.recent.EditForm"
+    description="Patch recent-item portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.recent_editform__init__"
+    />
   <!-- RSS portlet -->
   <monkey:patch
-      description="Patch RSS portlet's Assignment class"
-      class="plone.app.portlets.portlets.rss.Assignment"
-      original="__init__"
-      replacement=".patcher.rss_assignment__init__"
-      />
+    class="plone.app.portlets.portlets.rss.Assignment"
+    description="Patch RSS portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.rss_assignment__init__"
+    />
   <monkey:patch
-      description="Patch RSS portlet's AddForm class"
-      class="plone.app.portlets.portlets.rss.AddForm"
-      original="create"
-      replacement=".patcher.rss_create"
-      />
+    class="plone.app.portlets.portlets.rss.AddForm"
+    description="Patch rss-item portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.rss_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.rss.AddForm"
+    description="Patch RSS portlet's AddForm class"
+    original="create"
+    replacement=".patcher.rss_create"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.rss.EditForm"
+    description="Patch rss-item portlet's EditForm class"
+    original="__init__"
+    replacement=".patcher.rss_editform__init__"
+    />
   <!-- Search portlet -->
   <monkey:patch
       description="Patch Search portlet's Assignment class"
