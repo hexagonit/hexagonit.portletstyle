@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-1.5.1 (2012-XX-XX)
+1.5.1 (2012-05-31)
 ==================
 
 - Fixed error while adding Subscribe Newsletter Portlet.
