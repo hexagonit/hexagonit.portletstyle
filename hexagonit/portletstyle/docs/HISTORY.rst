@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+1.5.1 (2012-XX-XX)
+==================
+
+- Fixed error while adding Subscribe Newsletter Portlet.
+  [taito]
+
 1.5 (2012-05-31)
 ================
 

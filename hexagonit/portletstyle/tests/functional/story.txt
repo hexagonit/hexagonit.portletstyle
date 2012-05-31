@@ -112,3 +112,5 @@ Add Subscribe Newsletter portlet::
 
     >>> 'id="form.portlet_style"' in browser.contents
     True
+
+    >>> browser.getControl(name="form.actions.save").click()
