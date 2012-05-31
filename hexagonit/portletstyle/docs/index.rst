@@ -1,7 +1,7 @@
 .. include:: README.rst
 
 Importing portlet styles from your own package
-==============================================
+----------------------------------------------
 
 This package uses `plone.app.registry` to store portlet styles. The added
 benefit of this is that you can easily control which styles you want to have
@@ -26,13 +26,13 @@ simply use ``purge="true"``.
 
 
 Styling third-party portlets
-============================
+----------------------------
 
 Follow the steps below to convince your third-party portlets to support
 selecting a style for them.
 
 Portlet Assignment
-------------------
+==================
 
 You portlet's ``Assignment`` class must have an ``__init__()`` and inside this method
 it must call base assignment's ``__init__()``. To put it in other words,
@@ -41,12 +41,26 @@ it must call base assignment's ``__init__()``. To put it in other words,
 the ``self.portlet_style`` value. You need to call this ``__init__()`` from your
 portlet's assignment's ``__init__()``.
 
+Also in addition to inheriting schema interface from ``IPortletDataProvider``,
+it need to inherit ``IPortletStyleDataProvider``.
+
 An example of how this can be achieved:
 
 .. code-block:: python
 
+    from hexagonti.portletstyle.patcher import IPortletStyleDataProvider
+    from plone.portlets.interfaces import IPortletDataProvider
+
+
+    class IMyCustomPortlet(IPortletDataProvider, IPortletStyleDataProvider):
+        """Your schema comest here."""
+
+
     from plone.app.portlets.portlets import base
+
+
     class Assignment(base.Assignment):
+
         implements(IMyCustomPortlet)
 
         def __init__(self, *args, **kwargs):
@@ -55,7 +69,7 @@ An example of how this can be achieved:
             self.bar = kwargs.get('bar', "bar")
 
 Portlet AddForm
----------------
+===============
 
 Each portlet also has an ``AddForm`` class with a ``create`` method. This method
 must also pass the portlet style as a parameter. To make things simpler, just
@@ -70,7 +84,7 @@ pass in the entire ``data``.
             return Assignment(**data)
 
 Template
---------
+========
 
 Use the style in the template to assign an additional CSS class to your portlet:
 
@@ -82,7 +96,7 @@ Use the style in the template to assign an additional CSS class to your portlet:
 
 
 Translations
-============
+------------
 
 Rebuild POT:
 
@@ -110,7 +124,7 @@ Contents:
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

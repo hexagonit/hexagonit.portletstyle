@@ -1,5 +1,5 @@
 License
-=======
+-------
 
 Copyright (c) 2011, Hexagon IT Oy
 All rights reserved.

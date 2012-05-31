@@ -316,10 +316,8 @@ class INewSubscribeNewsletterPortlet(subscribe.ISubscribeNewsletterPortlet, IPor
 
 
 def portlet_SubscribeNewsletter_assignment__init__(self, *args, **kwargs):
-    base.Assignment.__init__(self, *args, **kwargs)
-    directlyProvides(self, )
-    self.name = kwargs.get('name', u"")
-    self.newsletters = kwargs.get('newsletters', None)
+    super(self.__class__, self).__init__(*args, **kwargs)
+    directlyProvides(self, INewSubscribeNewsletterPortlet)
 
 
 def subscribe_addform__init__(self, context, request):

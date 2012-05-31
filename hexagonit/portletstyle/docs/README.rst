@@ -12,7 +12,7 @@ through Plone Control Panel) classes.
 
 
 Installation
-============
+------------
 
 To install ``hexagonit.portletstyle`` you simply add
 ``hexagonit.portletstyle`` to the list of eggs in your buildout, run
@@ -21,14 +21,14 @@ Add-ons control panel.
 
 
 Usage
-=====
+-----
 
 Click on ``Manage portlets`` and add or edit a portlet. Select your desired
 portlet style from the `Portlet Style` drop-down menu and save. That's it.
 
 
 Default portlet styles
-======================
+----------------------
 
 By default, this package gives you three default portlet styles:
 
@@ -38,7 +38,7 @@ By default, this package gives you three default portlet styles:
 
 
 Managing available portlet styles
-=================================
+---------------------------------
 
 You can add, edit and remove available portlet styles by going to the `Plone
 Control Panel` and clicking on the ``Portlet Styles`` configlet. Pointing your
@@ -56,7 +56,7 @@ multiple CSS classes, for example, the following is valid:
 
 
 Supported portlets
-==================
+------------------
 
 As of this moment, the following portlets are supported (as in, you can select
 a style when editing them):
@@ -75,6 +75,7 @@ Supported addon portlets
 
 * `Quickupload portlet <http://pypi.python.org/pypi/collective.quickupload>`_
 * `TagCloud portlet <http://pypi.python.org/pypi/qi.portlet.TagClouds>`_
+* Subscribe Newsletter portlet (Only internally at Hexagon IT)
 
 The rest of out-of-the-box Plone portlets are non-editable ones as you normally
 need only one instance per site. For these (and other) reasons the following
