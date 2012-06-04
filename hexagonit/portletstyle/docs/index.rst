@@ -48,7 +48,7 @@ An example of how this can be achieved:
 
 .. code-block:: python
 
-    from hexagonti.portletstyle.patcher import IPortletStyleDataProvider
+    from hexagonit.portletstyle.interfaces import IPortletStyleDataProvider
     from plone.portlets.interfaces import IPortletDataProvider
 
 

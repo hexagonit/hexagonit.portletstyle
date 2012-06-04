@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """Monkey patches to support choosing a style for a portlet."""
-from Products.PloneGazette.portlet import subscribe
 from collective.quickupload.portlet import quickuploadportlet
-from hexagonit.portletstyle import _
+from hexagonit.portletstyle.interfaces import IPortletStyleDataProvider
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
@@ -22,19 +21,7 @@ from zope.formlib.form import expandPrefix
 from zope.formlib.interfaces import DISPLAY_UNWRITEABLE
 from zope.formlib.interfaces import IDisplayWidget
 from zope.formlib.interfaces import IInputWidget
-from zope.interface import Interface
 from zope.interface import directlyProvides
-from zope.schema import Choice
-
-
-class IPortletStyleDataProvider(Interface):
-    portlet_style = Choice(
-        title=_(u"Portlet style"),
-        description=_(u"Select this portlet's style"),
-        vocabulary=u"hexagonit.portletstyle.StylesVocabulary",
-        required=True,
-        default=" ",  # This makes the 'Default style' selected by default
-    )
 
 
 def get_portlet_style(self):
@@ -308,28 +295,6 @@ def tagcloudportlet_editform__init__(self, context, request):
     self.form_fields = form.Fields(INewTagCloudPortlet)
     self.form_fields['root'].custom_widget = UberSelectionWidget
     super(tagcloudportlet.EditForm, self).__init__(context, request)
-
-
-# portlets.SubscribeNewsletter
-class INewSubscribeNewsletterPortlet(subscribe.ISubscribeNewsletterPortlet, IPortletStyleDataProvider):
-    """DataProvider Interface for Subscribe Newsletter portlet."""
-
-
-def portlet_SubscribeNewsletter_assignment__init__(self, *args, **kwargs):
-    super(self.__class__, self).__init__(*args, **kwargs)
-    directlyProvides(self, INewSubscribeNewsletterPortlet)
-    self.name = kwargs.get('name', u'')
-    self.newsletters = kwargs.get('newsletters', None)
-
-
-def subscribe_addform__init__(self, context, request):
-    self.form_fields = form.Fields(INewSubscribeNewsletterPortlet)
-    super(subscribe.AddForm, self).__init__(context, request)
-
-
-def subscribe_editform__init__(self, context, request):
-    self.form_fields = form.Fields(INewSubscribeNewsletterPortlet)
-    super(subscribe.EditForm, self).__init__(context, request)
 
 
 def setUpEditWidgets(form_fields, form_prefix, context, request,

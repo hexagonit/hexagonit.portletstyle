@@ -105,12 +105,3 @@ Add Tag Cloud portlet::
 
     >>> 'id="form.portlet_style"' in browser.contents
     True
-
-Add Subscribe Newsletter portlet::
-
-    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.SubscribeNewsletter')
-
-    >>> 'id="form.portlet_style"' in browser.contents
-    True
-
-    >>> browser.getControl(name="form.actions.save").click()

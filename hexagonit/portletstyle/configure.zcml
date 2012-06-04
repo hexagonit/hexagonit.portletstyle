@@ -263,25 +263,6 @@
     original="__init__"
     replacement=".patcher.tagcloudportlet_editform__init__"
     />
-  <!-- portlets.SubscribeNewsletter -->
-  <monkey:patch
-    class="Products.PloneGazette.portlet.subscribe.Assignment"
-    description="Patch SubscribeNewsletter portlet's Assignment class"
-    original="__init__"
-    replacement=".patcher.portlet_SubscribeNewsletter_assignment__init__"
-    />
-  <monkey:patch
-    class="Products.PloneGazette.portlet.subscribe.AddForm"
-    description="Patch subscribe portlet's AddForm class"
-    original="__init__"
-    replacement=".patcher.subscribe_addform__init__"
-    />
-  <monkey:patch
-    class="Products.PloneGazette.portlet.subscribe.EditForm"
-    description="Patch subscribe portlet's EditForm class"
-    original="__init__"
-    replacement=".patcher.subscribe_editform__init__"
-    />
     <!--  -->
   <monkey:patch
     module="zope.formlib.form"

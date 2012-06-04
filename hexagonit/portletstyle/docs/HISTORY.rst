@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+1.6 (2012-06-04)
+================
+
+- Removed dependency to Products.PloneGazette. [taito]
+
 1.5.1 (2012-05-31)
 ==================
 

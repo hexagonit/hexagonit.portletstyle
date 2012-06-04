@@ -14,7 +14,6 @@ from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
 import mock
-import unittest2 as unittest
 
 
 class TestPorltets(IntegrationTestCase):
@@ -223,20 +222,3 @@ class TestPorltets(IntegrationTestCase):
         # test HTML
         renderer.update()
         self.assertIn('<dl class="portlet portletTagCloudPortlet noheader">', renderer.render())
-
-    def test_portlet_SubscribeNewsletter(self):
-        """Test That SubscribeNewsletter portlet is patched."""
-        from Products.PloneGazette.portlet.subscribe import Assignment
-        # add  portlet
-        portlet = self._add_portlet(
-            name='portlets.SubscribeNewsletter',
-            assignment_class=Assignment
-        )
-        renderer = queryMultiAdapter((self.portal, self.request, self.view, self.manager, portlet), IPortletRenderer)
-        self.assertEquals(renderer.portlet_style(), 'noheader')
-
-
-def test_suite():
-    """This sets up a test suite that actually runs the tests in the class
-    above."""
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

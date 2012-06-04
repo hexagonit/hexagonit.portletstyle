@@ -75,7 +75,6 @@ Supported addon portlets
 
 * `Quickupload portlet <http://pypi.python.org/pypi/collective.quickupload>`_
 * `TagCloud portlet <http://pypi.python.org/pypi/qi.portlet.TagClouds>`_
-* Subscribe Newsletter portlet (Only internally at Hexagon IT)
 
 The rest of out-of-the-box Plone portlets are non-editable ones as you normally
 need only one instance per site. For these (and other) reasons the following
