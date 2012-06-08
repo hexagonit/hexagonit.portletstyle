@@ -208,11 +208,13 @@ def static_assignment__init__(self, *args, **kwargs):
 
 def static_addform__init__(self, context, request):
     self.form_fields = form.Fields(INewStaticPortlet)
+    self.form_fields['text'].custom_widget = static.WYSIWYGWidget
     super(static.AddForm, self).__init__(context, request)
 
 
 def static_editform__init__(self, context, request):
     self.form_fields = form.Fields(INewStaticPortlet)
+    self.form_fields['text'].custom_widget = static.WYSIWYGWidget
     super(static.EditForm, self).__init__(context, request)
 
 
