@@ -4,8 +4,6 @@
 from Products.CMFCore.utils import getToolByName
 from hexagonit.portletstyle.tests.base import IntegrationTestCase
 
-import unittest2 as unittest
-
 
 class TestSetup(IntegrationTestCase):
     """Test installation of hexagonit.portletstyle into Plone."""
@@ -29,28 +27,92 @@ class TestSetup(IntegrationTestCase):
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         self.failUnless(installer.isProductInstalled('qi.portlet.TagClouds'))
 
+    def test_browserlayer(self):
+        """Test that IPortletStyleLayer is registered."""
+        from hexagonit.portletstyle.interfaces import IPortletStyleLayer
+        from plone.browserlayer import utils
+        self.assertIn(IPortletStyleLayer, utils.registered_layers())
+
+    def get_action(self, name):
+        controlpanel = getToolByName(self.portal, 'portal_controlpanel')
+        return controlpanel.getActionObject(name)
+
+    def test_controlpanel__portletsytles__title(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertEqual(action.title, u'Portlet Styles')
+
+    def test_controlpanel__portletsytles__appId(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertEqual(action.appId, 'hexagonit.portletstyle')
+
+    def test_controlpanel__portletsytles__condition_expr(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertEqual(action.condition, '')
+
+    def test_controlpanel__portletsytles__url_expr(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertEqual(action.getActionExpression(), 'string:${portal_url}/@@portletstyles')
+
+    def test_controlpanel__portletsytles__visible(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertTrue(action.visible)
+
+    def test_controlpanel__portletsytles__permissions(self):
+        action = self.get_action('Products/portletstyles')
+        self.assertEqual(action.permissions, ('Manage portal',))
+
+    def test_cssregistry(self):
+        """Test if portletstyle.s css file is registered with portal_css."""
+        resources = self.portal.portal_css.getResources()
+        ids = [r.getId() for r in resources]
+        self.assertIn('++resource++portletstyle.css', ids)
+
+    def test_metadata__version(self):
+        setup = getToolByName(self.portal, 'portal_setup')
+        self.assertEqual(
+            setup.getVersionForProfile(
+                'profile-hexagonit.portletstyle:default'), u'0102')
+
+    def test_registry(self):
+        from hexagonit.portletstyle.interfaces import IPortletStyles
+        from plone.registry.interfaces import IRegistry
+        from zope.component import getUtility
+        records = getUtility(IRegistry).forInterface(IPortletStyles)
+        self.assertEqual(records.portlet_styles, [
+            'noheader|No header', 'nofooter|No footer', 'noheader nofooter|No header and no footer'])
+
     def test_uninstall(self):
         """Test if hexagonit.portletstyle is cleanly uninstalled."""
         installer = getToolByName(self.portal, 'portal_quickinstaller')
         installer.uninstallProducts(['hexagonit.portletstyle'])
         self.failIf(installer.isProductInstalled('hexagonit.portletstyle'))
 
-    # browserlayer.xml
-    def test_browserlayer(self):
-        """Test that IPortletStyleLayer is registered."""
+    def test_uninstall__browserlayer(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['hexagonit.portletstyle'])
         from hexagonit.portletstyle.interfaces import IPortletStyleLayer
         from plone.browserlayer import utils
-        self.failUnless(IPortletStyleLayer in utils.registered_layers())
+        self.assertNotIn(IPortletStyleLayer, utils.registered_layers())
 
-    # cssregistry.xml
-    def test_css_registered(self):
-        """Test if portletstyle.s css file is registered with portal_css."""
+    def test_ininstall__controlpanel(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['hexagonit.portletstyle'])
+        self.assertIsNone(self.get_action('Products/portletstyles'))
+
+    def test_ininstall__cssregistry(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['hexagonit.portletstyle'])
         resources = self.portal.portal_css.getResources()
         ids = [r.getId() for r in resources]
-        self.failUnless('++resource++portletstyle.css' in ids, 'portletstyle.css not found in portal_css')
+        self.assertNotIn('++resource++portletstyle.css', ids)
 
-
-def test_suite():
-    """This sets up a test suite that actually runs the tests in the class
-    above."""
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
+    def test_ininstall__registry(self):
+        installer = getToolByName(self.portal, 'portal_quickinstaller')
+        installer.uninstallProducts(['hexagonit.portletstyle'])
+        from hexagonit.portletstyle.interfaces import IPortletStyles
+        from plone.registry.interfaces import IRegistry
+        from zope.component import getUtility
+        # remove="true" is not working as expected...
+        # records = getUtility(IRegistry).forInterface(IPortletStyles)
+        # self.assertEqual(records.portlet_styles, [
+        #     'noheader|No header', 'nofooter|No footer', 'noheader nofooter|No header and no footer'])

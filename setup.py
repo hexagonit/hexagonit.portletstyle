@@ -13,8 +13,7 @@ long_description = (
     read('hexagonit', 'portletstyle', 'docs', 'FUTURE.rst') +
     read('hexagonit', 'portletstyle', 'docs', 'CREDITS.rst') +
     read('hexagonit', 'portletstyle', 'docs', 'HISTORY.rst') +
-    read('hexagonit', 'portletstyle', 'docs', 'LICENSE.rst')
-)
+    read('hexagonit', 'portletstyle', 'docs', 'LICENSE.rst'))
 
 
 setup(
@@ -29,8 +28,10 @@ setup(
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Framework :: Plone :: 4.3",
+        "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
-    ],
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7"],
     keywords='',
     author='Hexagon IT',
     author_email='oss@hexagonit.fi',
@@ -53,12 +54,10 @@ setup(
         'qi.portlet.TagClouds',
         'setuptools',
         'z3c.jbot',
-        'zope.i18nmessageid',
-    ],
+        'zope.i18nmessageid'],
     entry_points="""
     # -*- Entry points: -*-
 
     [z3c.autoinclude.plugin]
     target = plone
-    """,
-)
+    """)
