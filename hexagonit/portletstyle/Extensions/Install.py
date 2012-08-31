@@ -9,3 +9,4 @@ def uninstall(self):
     portal_setup.runAllImportStepsFromProfile(
         'profile-hexagonit.portletstyle:uninstall',
         purge_old=False)
+    portal_setup.setBaselineContext('profile-Products.CMFPlone:plone')

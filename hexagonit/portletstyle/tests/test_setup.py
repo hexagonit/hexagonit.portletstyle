@@ -113,6 +113,6 @@ class TestSetup(IntegrationTestCase):
         from plone.registry.interfaces import IRegistry
         from zope.component import getUtility
         # remove="true" is not working as expected...
-        # records = getUtility(IRegistry).forInterface(IPortletStyles)
-        # self.assertEqual(records.portlet_styles, [
-        #     'noheader|No header', 'nofooter|No footer', 'noheader nofooter|No header and no footer'])
+        records = getUtility(IRegistry).forInterface(IPortletStyles)
+        self.assertEqual(records.portlet_styles, [
+            'noheader|No header', 'nofooter|No footer', 'noheader nofooter|No header and no footer'])
