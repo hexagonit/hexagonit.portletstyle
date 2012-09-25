@@ -105,3 +105,8 @@ Add Tag Cloud portlet::
 
     >>> 'id="form.portlet_style"' in browser.contents
     True
+
+Add Login portlet::
+
+    >>> browser.open('/++contextportlets++plone.leftcolumn/+/portlets.Login')
+
