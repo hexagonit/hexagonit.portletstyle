@@ -19,7 +19,7 @@ long_description = (
 
 setup(
     name='hexagonit.portletstyle',
-    version='1.6.1',
+    version='1.6.2',
     description="Assign a CSS style to a portlet",
     long_description=long_description,
     # Get more strings from
