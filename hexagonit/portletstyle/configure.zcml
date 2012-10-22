@@ -35,6 +35,26 @@
     replacement=".patcher.base_assignment__init__"
     />
 
+  <!-- Login portlet -->
+  <monkey:patch
+    class="plone.app.portlets.portlets.login.Assignment"
+    description="Patch Login portlet's Assignment class"
+    original="__init__"
+    replacement=".patcher.login_assignment__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.login.AddForm"
+    description="Patch login portlet's AddForm class"
+    original="__init__"
+    replacement=".patcher.login_addform__init__"
+    />
+  <monkey:patch
+    class="plone.app.portlets.portlets.login.AddForm"
+    description="Patch Login portlet's AddForm class"
+    original="create"
+    replacement=".patcher.login_create"
+    />
+
   <!-- Now also patch each portlet's Assignment and AddForm classes -->
   <!-- Events portlet -->
   <monkey:patch

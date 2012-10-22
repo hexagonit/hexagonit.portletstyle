@@ -5,6 +5,7 @@ from hexagonit.portletstyle.interfaces import IPortletStyleDataProvider
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
+from plone.app.portlets.portlets import login
 from plone.app.portlets.portlets import navigation
 from plone.app.portlets.portlets import news
 from plone.app.portlets.portlets import recent
@@ -190,6 +191,25 @@ def search_create(self, data):
 def search_editform__init__(self, context, request):
     self.form_fields = form.Fields(INewSearchPortlet)
     super(search.EditForm, self).__init__(context, request)
+
+
+# portlet.Login
+class INewLoginPortlet(login.ILoginPortlet, IPortletStyleDataProvider):
+    """DataProvider Interface for Login portlet."""
+
+
+def login_assignment__init__(self, *args, **kwargs):
+    base.Assignment.__init__(self, *args, **kwargs)
+    directlyProvides(self, INewLoginPortlet)
+
+
+def login_addform__init__(self, context, request):
+    self.form_fields = form.Fields(INewLoginPortlet)
+    super(login.AddForm, self).__init__(context, request)
+
+
+def login_create(self):
+    return login.Assignment()
 
 
 # portlet.Static
