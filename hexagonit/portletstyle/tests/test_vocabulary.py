@@ -6,7 +6,7 @@ from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
 import mock
-import unittest2 as unittest
+import unittest
 
 styles = 'hexagonit.portletstyle.interfaces.IPortletStyles.portlet_styles'
 

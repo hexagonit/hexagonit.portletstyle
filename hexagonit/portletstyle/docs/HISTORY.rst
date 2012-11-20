@@ -1,9 +1,16 @@
 Changelog
 =========
 
+
+1.6.2.1 (2012-11-20)
+--------------------
+
+- Release for Plone-4.2.2. [taito]
+
 1.6.2  (2012-09-28)
 -------------------
-- Login portled patched [rnd]
+
+- Login portlet patched [rnd]
 
 1.6.1  (2012-06-08)
 -------------------

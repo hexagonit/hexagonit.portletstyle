@@ -11,7 +11,7 @@ from zope.component import getUtility
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
-import unittest2 as unittest
+import unittest
 
 
 class TestSelectStyle(IntegrationTestCase):

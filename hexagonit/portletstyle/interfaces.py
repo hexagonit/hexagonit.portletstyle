@@ -18,7 +18,8 @@ class IPortletStyles(Interface):
 
     portlet_styles = List(
         title=_(u'label_portlet_styles', default=u'Available portlet styles'),
-        description=_(u'description_portlet_styles',
+        description=_(
+            u'description_portlet_styles',
             default=u'Enter portlet styles that users will be able to '
                     u'choose from the dropdown menu when editing portlets. '
                     u'One style per line. '),
