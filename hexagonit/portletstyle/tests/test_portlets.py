@@ -176,7 +176,7 @@ class TestPorltets(IntegrationTestCase):
 
         # test HTML
         renderer.update()
-        self.assertIn('<dl class="portlet portletStaticText noheader portlet-static-">', renderer.render())
+        self.assertIn('<dl class="portlet portletStaticText noheader portlet-static">', renderer.render())
 
     def test_portlet_collection(self):
         """Test that collection portlet is patched."""
